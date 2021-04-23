@@ -1,0 +1,85 @@
+<body>
+  <section   class="recette">
+
+    <div id="login">
+        <div class="container">
+
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+
+                        <form id="login-form" [formGroup]="loginForm" (ngSubmit)="addrecette()">
+                          <h4 class="titleText" style="text-align:center;color:white">Ajouter Recette</h4>
+                          <div class="form-group">
+                                <label for="titre"  class="text-info"  style="color:#42B32F">Titre:</label><br>
+                                <input type="titre" name="titre"   formControlName="titre"  [ngClass]="{ 'is-invalid': submitted && f.titre.errors }"  id="titre" class="form-control"  required
+                               >
+                               <div *ngIf="submitted && f.titre.errors" class="invalid-feedback">
+                                <div *ngIf="f.titre.errors.required"> Titre is required</div>
+                            </div>
+                              </div>
+                            <div class="form-group">
+                                <label for="description" class="text-info"  style="color:#42B32F">Description:</label><br>
+                                <textarea  rows="2" cols="30"
+                                  name="description" formControlName="description"
+                                id="description"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+                                </textarea>
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                  <div *ngIf="f.description.errors.required">description is required</div>
+                              </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="pdf" class="text-info" >Pdf: </label>
+                                <input
+                                  formControlName="pdf"
+                                  (change)="onSelectPdf($event)"
+                                  type="file"
+                                  name="pdf"
+                                  accept="application/pdf"
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label for="pdf" class="text-info" >Image:</label>
+                                <input
+                                  formControlName="image"
+                                  (change)="onSelectimage($event)"
+                                  type="file"
+                                  name="pdf"
+                                  accept="image/png, image/jpeg"
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label for="categorie" class="text-info">Categorie :</label>
+
+                                <select
+                                  name="cat"
+                                  required
+                                  formControlName="categorie"
+                                  placeholder="select categorie"
+                                  class="form-control"
+                                >
+                                  >
+                                  <option value="default" disabled selected hidden>
+                                    Please Choose...
+                                  </option>
+
+                                  <option *ngFor="let cat of categories" [ngValue]="cat">
+                                    {{ cat }}
+                                  </option>
+
+                                </select>
+                              </div>
+                            <div class="form-group">
+                                <input type="submit"  name="submit"  class="btn btn-info btn-md"style="background-color:#42B32F" value="Ajouter">
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>

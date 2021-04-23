@@ -27,6 +27,8 @@ import {AuthInterceptor} from './components/auth/auth.interceptor';
 import { DetailsComponent } from './components/details/details.component'
 import { RouterModule, Routes } from '@angular/router';
 import { ChatComponent } from './components/chat/chat.component';
+import { ResetPComponent } from './components/reset-p/reset-p.component';
+import { NewpasswordComponent } from './components/newpassword/newpassword.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { ChatComponent } from './components/chat/chat.component';
     LoginComponent,
     DetailsComponent,
     ChatComponent,
+    ResetPComponent,
+    NewpasswordComponent,
      ],
   imports: [
     BrowserModule,

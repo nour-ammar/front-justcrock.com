@@ -12,6 +12,11 @@ export class DetailsComponent implements OnInit {
 id:any
 recette:any= {}
 recettes: any = [];
+comments: any = [];
+users:any=[]
+text:any
+edit: boolean = false;
+user:any
 constructor( private activateroute: ActivatedRoute,
     private recetteService: RecetteService,
     private router: Router) { }
@@ -23,7 +28,19 @@ constructor( private activateroute: ActivatedRoute,
       console.log('recette', this.recette);
 
     });
-  
+
+  }
+  deleteComment(comment:any){
+
+  }
+  change(){
+
+  }
+  editComment(comment:any){
+
+  }
+  postComment(){
+
   }
 
 }

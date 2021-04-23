@@ -23,9 +23,11 @@ export class SignUpService {
       fullName: fullName,
       email:email,
       password: password,
-    };
+    }
 
 
     return this.http.post(this.urlApi, body,this.noAuthHeader);
    }
+
+ 
 }

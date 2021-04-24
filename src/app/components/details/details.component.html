@@ -24,65 +24,61 @@ background-size:cover;
                     <div class="media mb40" *ngFor="let comment of comments">
                         <i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
 
-                        <div class="media-body"*ngFor="let user of users" >
-                            <h5 class="mt-0 font400 clearfix">
-                                        <a href="#" class="float-right"  *ngIf="user._id === comment.UserId">Reply</a>
-                                        {{ user.fullName }}
+                        <div class="media-body" >
+                          <div *ngFor="let user of users">
+                            <h5 class="mt-0 font400 clearfix"  *ngIf="user.id === comment.UserId">
+                                      {{ user.fullName }}</h5>
+                                      </div>
+                                        {{ comment.commentaire }}
+                                        <i
+                                        class="far fa-trash-alt"
+                                        *ngIf="userDetails.id === comment.UserId"
+                                        (click)="deleteComment(comment.id)"
+                                      ></i>
+                                      <i
+                                      class="fas fa-edit"
+                                      *ngIf="userDetails.id === comment.UserId"
+                                      (click)="change()"
+                                    ></i>
+                                    <form
+                                    *ngIf="edit && comment.UserId === userDetails.id"
+                                    className="edit-comment-form"
+                                  >
+                                    <br />
+                                    <input
+                                      type="text"
+                                      name="text"
+                                      defaultValue={{comment.commentaire}}
+                                      [(ngModel)]="text"
+                                    />
 
-                                        </h5>  {{ comment.commentaire }}
-
+                                    <i class="fa fa-check" (click)="editComment(text,comment.id)" aria-hidden="true"> </i>
+                                  </form>
                         </div>
-                        <i
-                        class="far fa-trash-alt"
-                        *ngIf="user.id === comment.UserId"
-                        (click)="deleteComment(comment)"
-                      ></i>
-                      <i
-                      class="fas fa-edit"
-                      *ngIf="user.id === comment.UserId"
-                      (click)="change()"
-                    ></i>
-                    <form
-                    *ngIf="edit && comment.commenterId === user._id"
-                    (ngSubmit)="editComment(comment)"
-                    className="edit-comment-form"
-                  >
-                    <label htmlFor="text" (click)="change()"> Edit </label>
-                    <br />
-                    <input
-                      type="text"
-                      name="text"
-                      defaultValue="{{ comment.text }}"
-                      [(ngModel)]="text"
-                    />
 
-                    <input type="submit" value="save modification" />
-                  </form>
                     </div>
 
 
                     <hr class="mb40">
                     <h4 class="mb40 text-uppercase font500">Post a comment</h4>
-                    <form role="form" >
-                      <div class="form-group">
+                    <form role="form" [formGroup]="registerForm" (ngSubmit)="postComment()">
+                      <div class="form-group"  >
                         <label>Comment</label>
                         <textarea
                           class="form-control"
                           rows="5"
-                          placeholder="Comment"
-                          [(ngModel)]="text"
-                          name="text"
+                          formControlName="Comment"
+                          [ngClass]="{ 'is-invalid': submitted && f.Comment.errors }"  id="Comment" class="form-control"  required
                         ></textarea>
                       </div>
                       <div class="clearfix float-right">
-                        <button
-                          type="button"
-                          class="btn btn-primary btn-lg"
-                          (click)="postComment()"
-                        >
-                          Submit
-                        </button>
+                        <input type="submit"  name="submit"  class="btn btn-info btn-md"style="background-color:#42B32F" value="Commenter">
+
+
                       </div>
+                      <div *ngIf="submitted && f.Comment.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Poster votre commentaire</div>
+                    </div>
                     </form>
                 </div>
             </article>

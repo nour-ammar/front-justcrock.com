@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import {RecetteService} from './../../services/recette.service';
+import {UserService} from './../../services/user.service'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
@@ -16,10 +18,13 @@ comments: any = [];
 users:any=[]
 text:any
 edit: boolean = false;
-user:any
+userDetails:any;
+registerForm: any;
+submitted = false;
+
 constructor( private activateroute: ActivatedRoute,
     private recetteService: RecetteService,
-    private router: Router) { }
+    private router: Router,private myService:UserService,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.id = this.activateroute.snapshot.params.id;
@@ -28,19 +33,68 @@ constructor( private activateroute: ActivatedRoute,
       console.log('recette', this.recette);
 
     });
-
+    this.myService.getAllService().subscribe((res:any)=>{
+      this.users=res
+      console.log('users',this.users)
+    })
+    this.recetteService.getServiceComments(this.id).subscribe((res:any)=>{
+      this.comments=res
+      console.log('comments',this.comments)
+    })
+    this.myService.getUserProfile().subscribe((data:any)=>{
+      this.userDetails=data.user
+      console.log(this.userDetails)
+    })
+    this.registerForm = this.formBuilder.group({
+      Comment: [' ', [Validators.required]],
+  });
   }
-  deleteComment(comment:any){
+  deleteComment(id:any){
+    this.recetteService.deleteServiceComment(id).subscribe((res:any)=>{
+      console.log(res)
+      this.getallcomments()
 
+    })
   }
   change(){
+    this.edit = !this.edit;
 
   }
-  editComment(comment:any){
+  editComment(comment:any,id:any){
+    this.recetteService.editServiceComment(comment,id,this.id,this.userDetails.id).subscribe((res:any)=>{
+      console.log(res)
+      this.edit = !this.edit;
+
+      this.getallcomments()
+
+    })
 
   }
+  getallcomments(){
+    this.recetteService.getServiceComments(this.id).subscribe((res:any)=>{
+      this.comments=res
+      console.log('comments',this.comments)
+    })
+  }
+  get f() { return this.registerForm.controls; }
+
   postComment(){
+    this.submitted = true;
 
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
+    }
+    this.recetteService.addServiceComment(this.userDetails.id,this.registerForm.value.Comment,this.id).subscribe((res)=>{
+      console.log(res)
+
+      this.getallcomments()
+      this.registerForm.value.Comment="Commenter"
+    })
   }
+
+
+
+
 
 }

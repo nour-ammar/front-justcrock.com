@@ -14,6 +14,7 @@ email:any;
 password:any;
 registerForm: any;
 submitted = false;
+role:any="user"
   constructor(private myService: SignUpService,private formBuilder: FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
@@ -21,6 +22,7 @@ submitted = false;
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      role:['user']
   });
   }
   adduser() {
@@ -31,6 +33,7 @@ submitted = false;
         this.FullName,
         this.email,
         this.password,
+        this.role
     )
       .subscribe((data) => {
         console.log("user added", data)

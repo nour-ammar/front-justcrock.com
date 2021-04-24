@@ -45,63 +45,10 @@
               {{recette.Description}}
               </p>
 
-            <a style="margin-left:200px; background: #42B32F" (click)="deleteRecette(recette.id)"><i class="fas fa-trash-alt"></i></a>
+            <a style="margin-left:200px; background: #42B32F" (click)="deleteRecette(recette.Id_recette)"><i class="fas fa-trash-alt"></i></a>
             <br/>
             </div>
           </div>
-
-
-
-
-          <div class="modal fade" id="modal-lg" #modall>
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">tes</h4>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" [src]="file"></iframe>
-                  </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                  <button
-                    type="button"
-                    class="btn btn-danger"
-                    data-dismiss="modal"
-                  >
-                    hide
-                  </button>
-                </div>
-              </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-          </div>
-          <!-- /.modal -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

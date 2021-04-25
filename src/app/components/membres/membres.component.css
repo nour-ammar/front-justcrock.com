@@ -145,7 +145,7 @@ section .section-title {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-  
+
 
 }
 
@@ -186,7 +186,7 @@ section .section-title {
 .expert .content .box .imgBx {
   position: relative ;
   width:100% ;
-  height:300px;
+  height:100%;
 }
 .expert .content .box .imgBx img {
   position: relative ;
@@ -194,13 +194,13 @@ section .section-title {
   left:0;
   width:100% ;
   height:100%;
-  object-fit:cover;
+  /* object-fit:cover; */
 }
-img
+/* img
 {
   max-width:110px;
   max-height:110px;
   width: auto;
   height: auto;
   margin:2%;
-}
+} */

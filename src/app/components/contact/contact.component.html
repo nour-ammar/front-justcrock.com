@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <section   class="contact" id="contact">
   <div class="title">
     <h2 class="titleText" ><span>N</span>ous contacter</h2>
@@ -5,18 +6,23 @@
   <div class="contactForm">
   <h3>Envoyer Un Message</h3>
   <div class="inputBox">
-    <input type='text' placeholder="Nom">
+    <input type='text' [(ngModel)]="model.nom"  placeholder="Nom">
   </div>
   <div class="inputBox">
-    <input type='text' placeholder="Email">
+    <input type='text'  [(ngModel)]="model.email" placeholder="Email">
   </div>
   <div class="inputBox">
-    <textarea  placeholder="Message"></textarea>
+    <textarea [(ngModel)]="model.message"  placeholder="Message"></textarea>
   </div>
   <div class="inputBox">
-    <input type="submit" value="envoyer">
+    <input type="submit" (click)="envoyer()" value="envoyer">
   </div>
+  <div class="success" *ngIf="showSuccessMessage" style="color:green ">Email envoyer</div>
+
+  <div class='alert' *ngIf='serverErrorMessages' style="color:red">
+   {{serverErrorMessages}}
+ </div>
   <br/><br/><br/>
   </div>
 </section>
-
+<app-footer></app-footer>

@@ -1,0 +1,97 @@
+<link
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  rel="stylesheet"
+/>
+
+<div
+  id="add"
+  style="
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+      url('https://res.cloudinary.com/dtl8igxn0/image/upload/v1615412080/copie_xkud7i.jpg');
+    background-size: cover;
+  "
+>
+<form [formGroup]="loginForm"
+(ngSubmit)="editrecette()">
+<div class="form-group">
+  <label
+    for="description"
+    style="color: #fcfffb"
+    >Description:</label
+  ><br />
+  <textarea
+    rows="2"
+    cols="30"
+    name="description"
+    formControlName="description"
+    id="description"
+
+  >
+  </textarea>
+
+</div>
+<div class="form-group">
+  <label
+    for="temps_Préparation"
+    style="color: #fcfffb"
+    >temps_Préparation:</label
+  ><br />
+  <textarea
+    rows="2"
+    cols="30"
+    name="temps_Préparation"
+    formControlName="temps_Préparation"
+  >
+  </textarea>
+</div>
+<div class="form-group">
+  <label
+    for="temps_cuisson"
+    style="color: #fcfffb"
+    >temps_cuisson:</label
+  ><br />
+  <textarea
+    rows="2"
+    cols="30"
+    name="temps_cuisson"
+    formControlName="temps_cuisson"
+  >
+  </textarea>
+</div>
+<div class="form-group">
+  <label
+    for="nombre_personne"
+    style="color: #fcfffb"
+    >nombre_personne:</label
+  ><br />
+  <textarea
+    rows="2"
+    cols="30"
+    name="nombre_personne"
+    formControlName="nombre_personne"
+  >
+  </textarea>
+</div>
+<div class="form-group">
+  <label for="image"     style="color: #fcfffb"
+  >Image:</label>
+  <input
+  class="image"
+    formControlName="image"
+    (change)="onSelectimage($event)"
+    type="file"
+    name="image"
+    accept="image/png, image/jpeg"
+  />
+</div>
+<div class="form-group">
+  <input
+    type="submit"
+    name="submit"
+    class="btn btn-info btn-md"
+    style="background-color: #308821;border:none"
+    value="Ajouter"
+     />
+</div>
+</form>
+</div>

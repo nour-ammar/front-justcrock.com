@@ -10,7 +10,7 @@ font-family: 'Poppins',sans-serif;}
 }
 .single-box{
   flex:1;
-  border:1px solid #fff;
+  border:5px solid rgb(255, 248, 248);
 
 }
 .container{
@@ -23,6 +23,36 @@ font-family: 'Poppins',sans-serif;}
   height:200px;
   width:100%;
 }
+.img-area {
+  position: relative;
+}
+
+/* Make the image responsive */
+.img-area img {
+  width: 100%;
+  height: auto;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.img-area .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: rgb(56, 55, 55);
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  /* box-shadow: 3px 8px 5px #585858; */
+}
+
+.img-area .btn:hover {
+  background-color: black;
+}
 .img-area img{
   height:100%;
   width:100%;
@@ -30,8 +60,9 @@ font-family: 'Poppins',sans-serif;}
 }
 .img-text{
   padding:10px 20px;
- background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))
 }
+
 p{
   font-size:25px;
   font-weight: 600;

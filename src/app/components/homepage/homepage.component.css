@@ -6,6 +6,9 @@
   font-family:'Poppins',sans-serif;
   scroll-behavior: smooth;
 }
+h2{
+  font-size: 20px;
+}
 h4{
   font-weight: 300;
    color:#111;

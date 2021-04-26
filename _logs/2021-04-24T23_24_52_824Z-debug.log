@@ -1,0 +1,86 @@
+0 verbose cli [
+0 verbose cli   'C:\\Program Files\\nodejs\\node.exe',
+0 verbose cli   'C:\\Users\\Yasser Sahli\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+0 verbose cli   'install',
+0 verbose cli   '@ngmodule/material-carousel'
+0 verbose cli ]
+1 info using npm@7.6.3
+2 info using node@v14.16.0
+3 timing config:load:defaults Completed in 1ms
+4 timing config:load:file:C:\Users\Yasser Sahli\AppData\Roaming\npm\node_modules\npm\npmrc Completed in 2ms
+5 timing config:load:builtin Completed in 2ms
+6 timing config:load:cli Completed in 1ms
+7 timing config:load:env Completed in 1ms
+8 timing config:load:file:C:\Users\Yasser Sahli\Desktop\justcrock.com\front-justcrock.com\.npmrc Completed in 0ms
+9 timing config:load:project Completed in 0ms
+10 timing config:load:file:C:\Users\Yasser Sahli\.npmrc Completed in 1ms
+11 timing config:load:user Completed in 1ms
+12 timing config:load:file:C:\Users\Yasser Sahli\AppData\Roaming\npm\etc\npmrc Completed in 1ms
+13 timing config:load:global Completed in 1ms
+14 timing config:load:cafile Completed in 0ms
+15 timing config:load:validate Completed in 1ms
+16 timing config:load:setUserAgent Completed in 0ms
+17 timing config:load:setEnvs Completed in 1ms
+18 timing config:load Completed in 9ms
+19 verbose npm-session 548f621444106b83
+20 timing npm:load Completed in 20ms
+21 timing arborist:ctor Completed in 0ms
+22 timing idealTree:init Completed in 602ms
+23 timing idealTree:userRequests Completed in 5ms
+24 silly idealTree buildDeps
+25 silly fetch manifest @ngmodule/material-carousel@^0.6.0
+26 timing arborist:ctor Completed in 0ms
+27 http fetch GET 200 https://registry.npmjs.org/@ngmodule%2fmaterial-carousel 2312ms
+28 silly fetch manifest @angular/material@^11.2.4
+29 http fetch GET 200 https://registry.npmjs.org/@angular%2fmaterial 764ms
+30 silly fetch manifest @angular/material@^7.0.0
+31 silly fetch manifest @angular/animations@~11.2.4
+32 http fetch GET 200 https://registry.npmjs.org/@angular%2fanimations 1115ms
+33 silly fetch manifest @angular/core@~11.2.4
+34 http fetch GET 304 https://registry.npmjs.org/@angular%2fcore 157ms (from cache)
+35 silly fetch manifest rxjs@~6.6.0
+36 http fetch GET 304 https://registry.npmjs.org/rxjs 125ms (from cache)
+37 silly fetch manifest zone.js@~0.11.3
+38 http fetch GET 304 https://registry.npmjs.org/zone.js 88ms (from cache)
+39 silly fetch manifest @angular/cdk@^11.2.3
+40 http fetch GET 200 https://registry.npmjs.org/@angular%2fcdk 1734ms
+41 silly fetch manifest @angular/common@~11.2.4
+42 http fetch GET 304 https://registry.npmjs.org/@angular%2fcommon 149ms (from cache)
+43 silly fetch manifest @angular/forms@~11.2.4
+44 http fetch GET 200 https://registry.npmjs.org/@angular%2fforms 1224ms
+45 silly fetch manifest @angular/platform-browser@~11.2.4
+46 http fetch GET 200 https://registry.npmjs.org/@angular%2fplatform-browser 1259ms
+47 timing idealTree Completed in 9601ms
+48 timing command:install Completed in 9612ms
+49 verbose stack Error: unable to resolve dependency tree
+49 verbose stack     at Arborist.[failPeerConflict] (C:\Users\Yasser Sahli\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:1157:25)
+49 verbose stack     at Arborist.[loadPeerSet] (C:\Users\Yasser Sahli\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:1134:34)
+49 verbose stack     at async Arborist.[buildDepStep] (C:\Users\Yasser Sahli\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:838:11)
+49 verbose stack     at async Arborist.buildIdealTree (C:\Users\Yasser Sahli\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:209:7)
+49 verbose stack     at async Promise.all (index 1)
+49 verbose stack     at async Arborist.reify (C:\Users\Yasser Sahli\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\reify.js:131:5)
+49 verbose stack     at async Install.install (C:\Users\Yasser Sahli\AppData\Roaming\npm\node_modules\npm\lib\install.js:120:5)
+50 verbose cwd C:\Users\Yasser Sahli\Desktop\justcrock.com\front-justcrock.com
+51 verbose Windows_NT 10.0.18363
+52 verbose argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\Yasser Sahli\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "install" "@ngmodule/material-carousel"
+53 verbose node v14.16.0
+54 verbose npm  v7.6.3
+55 error code ERESOLVE
+56 error ERESOLVE unable to resolve dependency tree
+57 error
+58 error While resolving: [1mfront-end[22m@[1m0.0.0[22m
+58 error Found: [1m@angular/material[22m@[1m11.2.10[22m[2m[22m
+58 error [2mnode_modules/@angular/material[22m
+58 error   [1m@angular/material[22m@"[1m^11.2.4[22m" from the root project
+58 error
+58 error Could not resolve dependency:
+58 error [35mpeer[39m [1m@angular/material[22m@"[1m^7.0.0[22m" from [1m@ngmodule/material-carousel[22m@[1m0.6.0[22m[2m[22m
+58 error [2mnode_modules/@ngmodule/material-carousel[22m
+58 error   [1m@ngmodule/material-carousel[22m@"[1m^0.6.0[22m" from the root project
+58 error
+58 error Fix the upstream dependency conflict, or retry
+58 error this command with --force, or --legacy-peer-deps
+58 error to accept an incorrect (and potentially broken) dependency resolution.
+58 error
+58 error See C:\Users\Yasser Sahli\Desktop\justcrock.com\front-justcrock.com\eresolve-report.txt for a full report.
+59 verbose exit 1

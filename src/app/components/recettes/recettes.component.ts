@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {RecetteService} from './../../services/recette.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import {UserService} from './../../services/user.service'
+
 
 @Component({
   selector: 'app-recettes',
@@ -11,13 +13,19 @@ import { Router } from '@angular/router';
 export class RecettesComponent implements OnInit {
   myArray: any = [];
   file: any;
-  categorie:any
+  categorie:any;
+  userDetails:any;
 
-  constructor(private myService: RecetteService,private sanitizer: DomSanitizer, private router: Router
+
+  constructor(private myService: RecetteService,private userService:UserService,private sanitizer: DomSanitizer, private router: Router
     ) { }
 
   ngOnInit(): void {
    this.getRecette()
+   this.userService.getUserProfile().subscribe((data:any)=>{
+    this.userDetails=data.user
+    console.log(this.userDetails.role)
+  })
 
   }
   getfile(f: any) {

@@ -1,68 +1,62 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { RecetteService } from './../../services/recette.service';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { RecetteService } from './../../services/recette.service';
 
 @Component({
-  selector: 'app-addrecette',
-  templateUrl: './addrecette.component.html',
-  styleUrls: ['./addrecette.component.css'],
+  selector: 'app-edit-recette',
+  templateUrl: './edit-recette.component.html',
+  styleUrls: ['./edit-recette.component.css'],
 })
-export class AddrecetteComponent implements OnInit {
-  loginForm: any;
+export class EditRecetteComponent implements OnInit {
   files: any = [];
-  categories: any = ['Entrée', 'Plat Principal', 'Patisseries Recettes'];
+  loginForm: any;
   submitted = false;
-
+  id: any;
   constructor(
     private myservice: RecetteService,
     private router: Router,
+    private activateroute: ActivatedRoute,
     private formBuilder: FormBuilder
   ) {
     this.loginForm = this.formBuilder.group({
       titre: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      ingredient: ['', [Validators.required]],
-      preparation: ['', [Validators.required]],
-      temps_Preparation:['', [Validators.required]],
-      nombre_personne:['', [Validators.required]],
-      temps_cuisson:['', [Validators.required]],
+      temps_Préparation: ['', [Validators.required]],
+      nombre_personne: ['', [Validators.required]],
+      temps_cuisson: ['', [Validators.required]],
       image: ['', [Validators.required]],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.id = this.activateroute.snapshot.params.id;
+  }
   onSelectimage(event: any) {
     this.files.push(event.target.files[0]);
   }
-
-  get f() {
-    return this.loginForm.controls;
-  }
-
-  addrecette() {
+  editrecette() {
     this.submitted = true;
 
     // stop here if form is invalid
 
     this.loginForm.image = this.files[0];
-    console.log(this.loginForm.image)
+    console.log(this.loginForm.image);
 
     this.myservice
-      .addService(
+      .editService(
+
         this.loginForm.value.description,
-        this.loginForm.value.ingredient,
-        this.loginForm.value.preparation,
         this.loginForm.value.temps_Préparation,
         this.loginForm.value.temps_cuisson,
         this.loginForm.value.nombre_personne,
         this.loginForm.image,
+        this.id,
       )
       .subscribe((data) => {
-        console.log(this.loginForm.image)
-        console.log('recette added', data);
-
+        console.log(this.loginForm.image);
+        console.log('recette updated', data);
       });
   }
 }

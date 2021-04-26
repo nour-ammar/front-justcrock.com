@@ -31,6 +31,7 @@ import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- I
 
 import { ResetPComponent } from './components/reset-p/reset-p.component';
 import { NewpasswordComponent } from './components/newpassword/newpassword.component';
+import { EditRecetteComponent } from './components/edit-recette/edit-recette.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { NewpasswordComponent } from './components/newpassword/newpassword.compo
     ChatComponent,
     ResetPComponent,
     NewpasswordComponent,
+    EditRecetteComponent,
      ],
   imports: [
     BrowserModule,

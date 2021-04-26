@@ -20,7 +20,7 @@
     id="details"
     style="
       background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
-        url('https://i-sam.unimedias.fr/2020/07/01/recettes-regime-mediterraneen.jpg');
+        url('https://res.cloudinary.com/dtl8igxn0/image/upload/v1615412080/copie_xkud7i.jpg');
       background-size: cover;
     "
   >
@@ -49,6 +49,8 @@
             <p class="mb-0"><b style="color: green; font-weight: bolder; font-size: 15px">Ustentils:</b></p>
           </div>
           <!-- / project-info-box -->
+          <button [routerLink]="['/edit', recette.Id_recette]" class="btn-edit">edit</button>
+
         </div>
         <!-- / column -->
 
@@ -58,13 +60,15 @@
             class="rounded"
           />
         </div>
+
         <!-- / column -->
       </div>
       <div
         style="
-          background: rgba(204, 204, 204, 0.5);
-          padding: 10%;
+          background: rgb(255, 255, 255);
+          padding: 7%;
           margin-top: 3%;
+          border-radius: 0.3rem;
         "
       >
         <hr class="mb40" />
@@ -134,7 +138,7 @@
               type="submit"
               name="submit"
               class="btn btn-info btn-md"
-              style="background-color: green; border: none"
+              style="background-color: green; border: none ; margin:1% 0;"
               value="Commenter"
             />
           </div>

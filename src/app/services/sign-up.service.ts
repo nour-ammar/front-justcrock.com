@@ -17,15 +17,18 @@ export class SignUpService {
     fullName: string,
     email: string,
     password: any,
-
+   role:any
    ){
     const body = {
       fullName: fullName,
       email:email,
       password: password,
-    };
+      role:role
+    }
 
 
     return this.http.post(this.urlApi, body,this.noAuthHeader);
    }
+
+
 }

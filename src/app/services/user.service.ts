@@ -64,5 +64,6 @@ noAuthHeader={headers:new HttpHeaders({'NoAuth':'True'})}
     return this.http.post('http://localhost:3000/api/contact/sendEmail',body)
 
   }
+  
 
 }

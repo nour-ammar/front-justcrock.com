@@ -65,6 +65,7 @@ export class RecettesComponent implements OnInit {
 
     this.rates.map((rate: any) => {
       if(rate.Id_recette == recette.Id_recette){
+        // changes 
         sum = sum +Number( rate.rates)
         nbr=nbr+1
 

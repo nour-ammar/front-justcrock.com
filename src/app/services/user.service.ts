@@ -44,4 +44,21 @@ noAuthHeader={headers:new HttpHeaders({'NoAuth':'True'})}
       return false
     }
   }
+  resetService(body:any){
+    return this.http.post('http://localhost:3000/api/user/reset-password',body)
+
+  }
+  NewService(body:any,token:any){
+    return this.http.post('http://localhost:3000/api/user/newpassword/'+token,body)
+
+  }
+  getIdService(id:any){
+    return this.http.get('http://localhost:3000/api/user/userProfileId/'+id)
+
+  }
+  getAllService(){
+    return this.http.get('http://localhost:3000/api/user/getUsers')
+
+  }
+
 }

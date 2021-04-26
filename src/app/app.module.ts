@@ -29,6 +29,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChatComponent } from './components/chat/chat.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- Important
 
+import { ResetPComponent } from './components/reset-p/reset-p.component';
+import { NewpasswordComponent } from './components/newpassword/newpassword.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- I
     LoginComponent,
     DetailsComponent,
     ChatComponent,
+    ResetPComponent,
+    NewpasswordComponent,
      ],
   imports: [
     BrowserModule,

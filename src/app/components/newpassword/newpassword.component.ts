@@ -15,6 +15,8 @@ export class NewpasswordComponent implements OnInit {
   registerForm: any;
   submitted = false;
   token:any
+  serverErrorMessages:any;
+  showSuccessMessage:any;
     constructor(private myService: UserService,private formBuilder: FormBuilder,private router:Router,private activateroute: ActivatedRoute,) { }
 
     ngOnInit(): void {
@@ -36,13 +38,20 @@ export class NewpasswordComponent implements OnInit {
         }
         this.myService
         .NewService(this.registerForm.value,this.token)
-        .subscribe((data:any) => {
-          console.log(data)
-          this.router.navigateByUrl('/login')
+        .subscribe(
+          (res:any)  =>{
+            this.showSuccessMessage=true
+            setTimeout(()=>this.showSuccessMessage=false,4000)
+            this.router.navigateByUrl('/login')
+          },
+                err =>{
+                  this.serverErrorMessages=err.error.error
+                   console.log(err)
+                }
 
 
 
-        })
+        )
     }
 
   }

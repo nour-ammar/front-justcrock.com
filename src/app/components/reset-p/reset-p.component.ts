@@ -11,6 +11,8 @@ export class ResetPComponent implements OnInit {
   email:any;
   registerForm: any;
   submitted = false;
+  serverErrorMessages:any;
+  showSuccessMessage:any
     constructor(private myService: UserService,private formBuilder: FormBuilder,private router:Router) { }
 
     ngOnInit(): void {
@@ -30,13 +32,18 @@ export class ResetPComponent implements OnInit {
         }
         this.myService
         .resetService(this.registerForm.value)
-        .subscribe((data:any) => {
-          console.log(data)
-          // this.router.navigateByUrl('/login')
+        .subscribe( (res:any)  =>{
+
+          this.showSuccessMessage=true
+          setTimeout(()=>this.showSuccessMessage=false,4000)
+          // this.showSuccessMessage="email envoyer verifier votre email"
 
 
-
-        })
+        },
+              err =>{
+                 this.serverErrorMessages=err.error.error
+                 console.log(err)
+              })
     }
 
   }

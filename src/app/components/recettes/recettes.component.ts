@@ -12,6 +12,7 @@ export class RecettesComponent implements OnInit {
   myArray: any = [];
   file: any;
   categorie:any
+  serverErrorMessages:any;
 
   constructor(private myService: RecetteService,private sanitizer: DomSanitizer, private router: Router
     ) { }

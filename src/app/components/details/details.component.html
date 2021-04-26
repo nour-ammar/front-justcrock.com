@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <link
   href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
   rel="stylesheet"
@@ -42,11 +43,11 @@
           <!-- / project-info-box -->
 
           <div class="project-info-box">
-            <p ><b style="color: green; font-weight: bolder; font-size: 15px">Ingrédients:</b></p>
-            <p><b style="color: green; font-weight: bolder; font-size: 15px">Cuisinier:</b> 14.02.2020</p>
-            <p><b style="color: green; font-weight: bolder; font-size: 15px">Temps de préparation:</b> James Doe</p>
-            <p><b style="color: green; font-weight: bolder; font-size: 15px">Temps de cuisson:</b> Illustrator</p>
-            <p class="mb-0"><b style="color: green; font-weight: bolder; font-size: 15px">Ustentils:</b></p>
+            <p ><b style="color: green; font-weight: bolder; font-size: 15px">Ingrédients: </b>{{recette.Ingredient}}</p>
+            <p><b style="color: green; font-weight: bolder; font-size: 15px">Cuisinier:</b> {{recette.Cuisinier}}</p>
+            <p><b style="color: green; font-weight: bolder; font-size: 15px">Temps de préparation:</b> {{recette.temps_Preparation}}</p>
+            <p><b style="color: green; font-weight: bolder; font-size: 15px">Temps de cuisson:</b> {{recette.temps_cuisson}}</p>
+            <p class="mb-0"><b style="color: green; font-weight: bolder; font-size: 15px">Ustentils:</b>{{recette.Ustensile}}</p>
           </div>
           <!-- / project-info-box -->
         </div>
@@ -146,3 +147,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>

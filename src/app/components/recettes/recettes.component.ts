@@ -17,7 +17,7 @@ export class RecettesComponent implements OnInit {
   serverErrorMessages:any;
   userDetails:any;
   rates:any;
-
+   recettes:any=[]
   constructor(private myService: RecetteService,private userService:UserService,private sanitizer: DomSanitizer, private router: Router
     ) { }
 
@@ -59,7 +59,7 @@ export class RecettesComponent implements OnInit {
       console.log(data);
       this.myArray = data;
 
-      this.myArray = this.rates.map((recette: any) => {
+      this.recettes = this.myArray.map((recette: any) => {
         var sum = 0;
          var nbr=0
 

@@ -24,12 +24,10 @@ export class RecettesComponent implements OnInit {
   ngOnInit(): void {
     this.myService.getServiceRates().subscribe((res:any)=>{
       this.rates=res
-      console.log(this.rates)
     })
    this.getRecette()
    this.userService.getUserProfile().subscribe((data:any)=>{
     this.userDetails=data.user
-    console.log(this.userDetails.role)
   })
 
 
@@ -49,14 +47,12 @@ export class RecettesComponent implements OnInit {
       .deleteService(id)
 
       .subscribe((data) => {
-        console.log(data)
         return this.getRecette();
       });
   }
   getRecette(){
 
     this.myService.getService().subscribe((data:any) => {
-      console.log(data);
       this.myArray = data;
 
       this.recettes = this.myArray.map((recette: any) => {
@@ -65,7 +61,6 @@ export class RecettesComponent implements OnInit {
 
     this.rates.map((rate: any) => {
       if(rate.Id_recette == recette.Id_recette){
-        // changes 
         sum = sum +Number( rate.rates)
         nbr=nbr+1
 

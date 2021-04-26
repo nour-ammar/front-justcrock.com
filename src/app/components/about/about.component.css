@@ -37,7 +37,7 @@
   text-align:left;
 }
 .titleText span{
-  color:#a6ff4d;
+  color:#458C41;
   font-weight:700;
   font-size:1.5em;
   text-align:left;
@@ -68,7 +68,10 @@
   background: #fff;
   height: 160px
 }
-
+.caption img{
+  padding:20%;
+  margin:1%;
+}
 #clients img {
   transition: all 0.4s ease-in-out
 }
@@ -249,7 +252,7 @@ html,
   border:0px;
 }
 .thumbnail .caption {
-  padding: 9px;
+  padding: 2%;
   color: #333;
   padding-left: 0px;
   padding-right: 0px;
@@ -276,11 +279,11 @@ p
 }
 .thumbnail {
   display: block;
-  padding: 4px;
+  padding: 10%;
   margin-bottom: 20px;
   line-height: 1.42857143;
   background-color: #fff;
-  border: 6px solid #D9D9D9;
+  border: 6px solid #c9c9c9;
   border-radius: 15px;
   -webkit-transition: border .2s ease-in-out;
   -o-transition: border .2s ease-in-out;

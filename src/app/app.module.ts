@@ -27,6 +27,8 @@ import {AuthInterceptor} from './components/auth/auth.interceptor';
 import { DetailsComponent } from './components/details/details.component'
 import { RouterModule, Routes } from '@angular/router';
 import { ChatComponent } from './components/chat/chat.component';
+import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- Important
+
 import { ResetPComponent } from './components/reset-p/reset-p.component';
 import { NewpasswordComponent } from './components/newpassword/newpassword.component';
 
@@ -61,7 +63,9 @@ import { NewpasswordComponent } from './components/newpassword/newpassword.compo
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCarouselModule.forRoot() // ---------- Important
+
 
   ],
   providers: [{ provide: HTTP_INTERCEPTORS,

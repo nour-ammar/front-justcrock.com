@@ -34,7 +34,8 @@
           <div class="card" style="border:1px solid white"
           >
 
-            <img (click)="getrecette(recette.Id_recette)"
+            <img [routerLink]="['/details', recette.Id_recette]"
+           
               src="assets/uploads/recettes/{{recette.Photo}}"
               class="card-img-top"
               alt="..." style="width:100%; height: 120px;"

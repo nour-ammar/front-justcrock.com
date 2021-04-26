@@ -22,18 +22,17 @@ export class RecetteService {
     return this.http.delete('http://localhost:3000/api/recette/' + id);
   }
   addService (
-    titre: string,
     description: string,
-    pdf: any,
+    temps_Préparation:any,
+    temps_cuisson:any,
+    nombre_personne:any,
     image: any,
-    categorie:any
+
    ){
     const body = new FormData();
-    body.append('titre', titre);
-    body.append('description', description);
-    body.append('file', pdf);
-    body.append('file', image);
-    body.append('categorie', categorie);
+    body.append('Description', description);
+    body.append('temps_Préparation', temps_Préparation);
+    body.append('Photo', image);
 
 
     return this.http.post(this.urlApi, body);

@@ -1,92 +1,148 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  rel="stylesheet"
+/>
 
-<div id="details" style="background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),url('https://res.cloudinary.com/dtl8igxn0/image/upload/v1615412080/copie_xkud7i.jpg');
-background-size:cover;
+<div
+  id="details"
+  style="
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+      url('https://res.cloudinary.com/dtl8igxn0/image/upload/v1615412080/copie_xkud7i.jpg');
+    background-size: cover;
+  "
+>
+  <link
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet"
+  />
 
-">
-<section >
-  <div class="container pb50" >
-    <div class="row">
-        <div class="col-md-9 mb40"  style=" margin-top: 100px; box-shadow: 0 15px 15px rgba(0, 0, 0, 0.12);margin-bottom: 50px;padding:20px;margin-left:110px;
-        background:rgba(204, 204, 179,0.5)
+  <div
+    id="details"
+    style="
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+        url('https://i-sam.unimedias.fr/2020/07/01/recettes-regime-mediterraneen.jpg');
+      background-size: cover;
+    "
+  >
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous"
+    />
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="project-info-box mt-0">
+            <h5 style="color: green; font-weight: bolder; font-size: 15px">
+              Description
+            </h5>
+            <p class="mb-0">{{ recette.Description }}</p>
+          </div>
+          <!-- / project-info-box -->
 
-" >
-            <article>
-                <img               src="assets/uploads/recettes/{{recette.image}}"
-                alt="" class="img-fluid mb30">
-                <div class="post-content">
-                    <h3>{{recette.titre}}</h3>
-                    <p>{{recette.description}}</p>
+          <div class="project-info-box">
+            <p ><b style="color: green; font-weight: bolder; font-size: 15px">Ingrédients:</b></p>
+            <p><b style="color: green; font-weight: bolder; font-size: 15px">Cuisinier:</b> 14.02.2020</p>
+            <p><b style="color: green; font-weight: bolder; font-size: 15px">Temps de préparation:</b> James Doe</p>
+            <p><b style="color: green; font-weight: bolder; font-size: 15px">Temps de cuisson:</b> Illustrator</p>
+            <p class="mb-0"><b style="color: green; font-weight: bolder; font-size: 15px">Ustentils:</b></p>
+          </div>
+          <!-- / project-info-box -->
+        </div>
+        <!-- / column -->
 
+        <div class="col-md-7">
+          <img
+            src="assets/uploads/recettes/{{ recette.Photo }}"
+            class="rounded"
+          />
+        </div>
+        <!-- / column -->
+      </div>
+      <div
+        style="
+          background: rgba(204, 204, 204, 0.5);
+          padding: 10%;
+          margin-top: 3%;
+        "
+      >
+        <hr class="mb40" />
+        <h4 class="mb40 text-uppercase font500">Comments</h4>
+        <div class="media mb40" *ngFor="let comment of comments">
+          <i class="d-flex mr-3 fa fa-user-circle-o fa-3x" style="color:white"></i>
 
-                    <hr class="mb40">
-                    <h4 class="mb40 text-uppercase font500">Comments</h4>
-                    <div class="media mb40" *ngFor="let comment of comments">
-                        <i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
+          <div class="media-body">
+            <div *ngFor="let user of users">
+              <h5
+                class="mt-0 font400 clearfix"
+                *ngIf="user.id === comment.UserId"
+              >
+                {{ user.fullName }}
+              </h5>
+            </div>
+            {{ comment.commentaire }}
+            <i
+              class="far fa-trash-alt"
+              *ngIf="userDetails.id === comment.UserId"
+              (click)="deleteComment(comment.id)"
+            ></i>
+            <i
+              class="fas fa-edit"
+              *ngIf="userDetails.id === comment.UserId"
+              (click)="change()"
+            ></i>
+            <form
+              *ngIf="edit && comment.UserId === userDetails.id"
+              className="edit-comment-form"
+            >
+              <br />
+              <input
+                type="text"
+                name="text"
+                defaultValue="{{ comment.commentaire }}"
+                [(ngModel)]="text"
+              />
 
-                        <div class="media-body" >
-                          <div *ngFor="let user of users">
-                            <h5 class="mt-0 font400 clearfix"  *ngIf="user.id === comment.UserId">
-                                      {{ user.fullName }}</h5>
-                                      </div>
-                                        {{ comment.commentaire }}
-                                        <i
-                                        class="far fa-trash-alt"
-                                        *ngIf="userDetails.id === comment.UserId"
-                                        (click)="deleteComment(comment.id)"
-                                      ></i>
-                                      <i
-                                      class="fas fa-edit"
-                                      *ngIf="userDetails.id === comment.UserId"
-                                      (click)="change()"
-                                    ></i>
-                                    <form
-                                    *ngIf="edit && comment.UserId === userDetails.id"
-                                    className="edit-comment-form"
-                                  >
-                                    <br />
-                                    <input
-                                      type="text"
-                                      name="text"
-                                      defaultValue={{comment.commentaire}}
-                                      [(ngModel)]="text"
-                                    />
-
-                                    <i class="fa fa-check" (click)="editComment(text,comment.id)" aria-hidden="true"> </i>
-                                  </form>
-                        </div>
-
-                    </div>
-
-
-                    <hr class="mb40">
-                    <h4 class="mb40 text-uppercase font500">Post a comment</h4>
-                    <form role="form" [formGroup]="registerForm" (ngSubmit)="postComment()">
-                      <div class="form-group"  >
-                        <label>Comment</label>
-                        <textarea
-                          class="form-control"
-                          rows="5"
-                          formControlName="Comment"
-                          [ngClass]="{ 'is-invalid': submitted && f.Comment.errors }"  id="Comment" class="form-control"  required
-                        ></textarea>
-                      </div>
-                      <div class="clearfix float-right">
-                        <input type="submit"  name="submit"  class="btn btn-info btn-md"style="background-color:#42B32F" value="Commenter">
-
-
-                      </div>
-                      <div *ngIf="submitted && f.Comment.errors" class="invalid-feedback">
-                        <div *ngIf="f.email.errors.required">Poster votre commentaire</div>
-                    </div>
-                    </form>
-                </div>
-            </article>
-            <!-- post article-->
-
+              <i
+                class="fa fa-check"
+                (click)="editComment(text, comment.id)"
+                aria-hidden="true"
+              >
+              </i>
+            </form>
+          </div>
         </div>
 
+        <hr class="mb40" />
+        <h4 class="mb40 text-uppercase font500">Post a comment</h4>
+        <form role="form" [formGroup]="registerForm" (ngSubmit)="postComment()">
+          <div class="form-group">
+            <label>Comment</label>
+            <textarea
+              class="form-control"
+              rows="5"
+              formControlName="Comment"
+              [ngClass]="{ 'is-invalid': submitted && f.Comment.errors }"
+              id="Comment"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+          <div class="clearfix float-right">
+            <input
+              type="submit"
+              name="submit"
+              class="btn btn-info btn-md"
+              style="background-color: green; border: none"
+              value="Commenter"
+            />
+          </div>
+          <div *ngIf="submitted && f.Comment.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Poster votre commentaire</div>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
-</section>
+  </div>
 </div>

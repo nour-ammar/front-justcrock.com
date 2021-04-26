@@ -25,7 +25,7 @@ const routes: Routes = [
   {path:'sign-up',component:SignUpComponent},
   {path:'login',component:LoginComponent},
   {path:'userProfile',component:UserProfileComponent,canActivate:[AuthGuard] },
-  {path:'details',component:DetailsComponent,pathMatch: 'full' },
+  {path:'details/:id',component:DetailsComponent,pathMatch: 'full' },
    {path:'chat',component:ChatComponent},
    {path:'reset',component:ResetPComponent},
    {path:'newpassword/:token',component:NewpasswordComponent},

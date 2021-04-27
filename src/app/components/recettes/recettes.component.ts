@@ -3,6 +3,7 @@ import {RecetteService} from './../../services/recette.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import {UserService} from './../../services/user.service'
+import { Profile } from './user-profile.model';
 
 
 @Component({
@@ -15,21 +16,22 @@ export class RecettesComponent implements OnInit {
   file: any;
   categorie:any
   serverErrorMessages:any;
-  userDetails:any;
+  userDetails:Profile;
   rates:any;
-
+   recettes:any=[]
   constructor(private myService: RecetteService,private userService:UserService,private sanitizer: DomSanitizer, private router: Router
-    ) { }
+    ) {
+      this.userDetails = new Profile();
+
+    }
 
   ngOnInit(): void {
     this.myService.getServiceRates().subscribe((res:any)=>{
       this.rates=res
-      console.log(this.rates)
     })
    this.getRecette()
    this.userService.getUserProfile().subscribe((data:any)=>{
     this.userDetails=data.user
-    console.log(this.userDetails.role)
   })
 
 
@@ -49,17 +51,15 @@ export class RecettesComponent implements OnInit {
       .deleteService(id)
 
       .subscribe((data) => {
-        console.log(data)
         return this.getRecette();
       });
   }
   getRecette(){
 
     this.myService.getService().subscribe((data:any) => {
-      console.log(data);
       this.myArray = data;
 
-      this.myArray = this.rates.map((recette: any) => {
+      this.recettes = this.myArray.map((recette: any) => {
         var sum = 0;
          var nbr=0
 

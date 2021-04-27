@@ -54,7 +54,7 @@ export class AddrecetteComponent implements OnInit {
         this.loginForm.value.description,
         this.loginForm.value.ingredient,
         this.loginForm.value.preparation,
-        this.loginForm.value.temps_Préparation,
+        this.loginForm.value.temps_Preparation,
         this.loginForm.value.temps_cuisson,
         this.loginForm.value.nombre_personne,
         this.loginForm.image,

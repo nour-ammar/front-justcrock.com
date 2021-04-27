@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input, Output, EventEmitter} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import {RecetteService} from './../../services/recette.service';
@@ -16,11 +16,18 @@ recette:any= {}
 recettes: any = [];
 comments: any = [];
 users:any=[]
+@Input() rating: any;
+@Input() itemId: any;
+@Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
 text:any
 edit: boolean = false;
 userDetails:any;
 registerForm: any;
 submitted = false;
+inputName: any;
+starRating: any;
+rates: any = [];
+change1: boolean = false;
 
 constructor( private activateroute: ActivatedRoute,
     private recetteService: RecetteService,
@@ -28,6 +35,10 @@ constructor( private activateroute: ActivatedRoute,
 
   ngOnInit(): void {
     this.id = this.activateroute.snapshot.params.id;
+    this.myService.getUserProfile().subscribe((data:any)=>{
+      this.userDetails=data.user
+      console.log(this.userDetails)
+    })
     this.recetteService.getrecetteById(this.id).subscribe((res) => {
       this.recette = res;
       console.log('recette', this.recette);
@@ -41,10 +52,10 @@ constructor( private activateroute: ActivatedRoute,
       this.comments=res
       console.log('comments',this.comments)
     })
-    this.myService.getUserProfile().subscribe((data:any)=>{
-      this.userDetails=data.user
-      console.log(this.userDetails)
+    this.recetteService.getRateService(this.id).subscribe((res:any)=>{
+      this.rates=res
     })
+
     this.registerForm = this.formBuilder.group({
       Comment: [' ', [Validators.required]],
   });
@@ -95,6 +106,29 @@ constructor( private activateroute: ActivatedRoute,
 
 
 
-
+  onClick(rating: number): void {
+    this.rating = rating;
+    this.ratingClick.emit({
+      itemId: this.itemId,
+      rating: rating,
+    });
+    for (var i = 0; i < this.rates.length; i++) {
+      if (this.userDetails.id === this.rates[i].UserId) {
+        this.change1 = true;
+        this.recetteService
+          .editRateService(this.id,this.userDetails.id, this.rates[i].id, this.rating)
+          .subscribe((data) => {
+            console.log('rate updateed');
+          });
+      }
+    }
+    if (this.change1 === false) {
+      this.recetteService
+        .addRateService(this.id, this.userDetails.id, this.rating)
+        .subscribe((data) => {
+          console.log('rate addedd');
+        });
+    }
+  }
 
 }

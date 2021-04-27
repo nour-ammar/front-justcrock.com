@@ -16,6 +16,8 @@ export class RecetteService {
   }
   editService(
     description: string,
+    ingredient:string,
+    preparation:string,
     temps_Preparation: any,
     temps_cuisson: any,
     nombre_personne: any,
@@ -24,7 +26,11 @@ export class RecetteService {
   ) {
     const body = new FormData();
     body.append('Description', description);
+    body.append('Ingredient', ingredient);
+    body.append('Preparation', preparation);
     body.append('temps_Preparation', temps_Preparation);
+    body.append('temps_cuisson', temps_cuisson);
+    body.append('nombre_personne', nombre_personne);
     body.append('Photo', image);
 
     return this.http.put('http://localhost:3000/api/recette/' + id, body);
@@ -79,5 +85,33 @@ export class RecetteService {
     };
 
     return this.http.put('http://localhost:3000/api/comment/editComment', body);
+  }
+  editRateService(id:any,rateId:any,rateid:any,rates:any){
+    const  body={
+       id:rateid,
+      Id_recette:id,
+      UserId:rateId,
+      rates:rates
+  }
+    return this.http.put(`http://localhost:3000/api/rate/editrate`,  body)
+
+  }
+
+  addRateService(id:any,raterId:any,rates:any){
+  const  body={
+        Id_recette:id,
+        UserId:raterId,
+        rates:rates
+    }
+    return this.http.post(`http://localhost:3000/api/rate/addrate`,body)
+
+  }
+  getRateService(id:any){
+    return this.http.get('http://localhost:3000/api/rate/' + id);
+
+  }
+  getServiceRates(){
+    return this.http.get('http://localhost:3000/api/rate/' );
+
   }
 }

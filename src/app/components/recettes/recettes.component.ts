@@ -13,19 +13,25 @@ import {UserService} from './../../services/user.service'
 export class RecettesComponent implements OnInit {
   myArray: any = [];
   file: any;
-  categorie:any;
+  categorie:any
+  serverErrorMessages:any;
   userDetails:any;
-
+  rates:any;
 
   constructor(private myService: RecetteService,private userService:UserService,private sanitizer: DomSanitizer, private router: Router
     ) { }
 
   ngOnInit(): void {
+    this.myService.getServiceRates().subscribe((res:any)=>{
+      this.rates=res
+      console.log(this.rates)
+    })
    this.getRecette()
    this.userService.getUserProfile().subscribe((data:any)=>{
     this.userDetails=data.user
     console.log(this.userDetails.role)
   })
+
 
   }
   getfile(f: any) {
@@ -48,30 +54,42 @@ export class RecettesComponent implements OnInit {
       });
   }
   getRecette(){
-    console.log('categorie',this.categorie)
+
     this.myService.getService().subscribe((data:any) => {
       console.log(data);
-     if(this.categorie==='Entrée'){
-      this.myArray =data.filter((recette:any) => recette.categorie === 'Entrée')
-     }else if(this.categorie ==='Plat Principal'){
-      this.myArray =data.filter((recette :any)=> recette.categorie === 'Plat Principal')
-
-     }else if(this.categorie === 'Patisseries Recettes'){
-      this.myArray =data.filter((recette:any )=> recette.categorie === 'Patisseries Recettes')
-
-     }else {
       this.myArray = data;
 
-     }
-    });
+      this.myArray = this.rates.map((recette: any) => {
+        var sum = 0;
+         var nbr=0
+
+    this.rates.map((rate: any) => {
+      if(rate.Id_recette == recette.Id_recette){
+        sum = sum +Number( rate.rates)
+        nbr=nbr+1
+
+      }
+
+    })
+
+    recette['averagerate'] = (sum /nbr).toFixed(1);
+    return recette;
+  })
+  .sort(function (a: any, b: any) {
+    if (a.averagerate === 'NaN') {
+      return 1;
+    } else if (b.averagerate === 'NaN') {
+      return -1;
+    } else {
+      return b.averagerate - a.averagerate;
+    }
+  });
+ console.log(this.myArray)
+    })
+
   }
 
-  handleClick(event: Event) {
-    console.log('Click!', event.target)
-    this.categorie=(event.currentTarget  as HTMLButtonElement).value
-    console.log(this.categorie)
-    this.getRecette()
-  }
+
   getrecette(id:any){
     this.router.navigate(['details',  { id: id }]).then(() => {
       location.reload();

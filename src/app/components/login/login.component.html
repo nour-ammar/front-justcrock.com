@@ -1,4 +1,4 @@
-
+<app-navbar></app-navbar>
 <body>
     <div id="login">
         <div class="container">
@@ -35,10 +35,14 @@
                             </div>
                         </form>
                         <br/>
-
+                        <div class='alert' *ngIf='serverErrorMessages' style="color:red">
+                          {{serverErrorMessages}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<app-footer></app-footer>
+

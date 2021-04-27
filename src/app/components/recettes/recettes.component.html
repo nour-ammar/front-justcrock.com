@@ -11,7 +11,7 @@
         <h1 class="gallery-title">Recettes</h1>
       </div>
 
-      <button class="btn1" routerLink="/addrecette">
+      <button class="btn1" routerLink="/addrecette" *ngIf="userDetails.role==='admin'">
         Ajouter recette <i class="fa fa-plus"></i>
       </button>
 
@@ -45,7 +45,7 @@
             <a
               style="margin-left: 200px; background: #42b32f"
               (click)="deleteRecette(recette.Id_recette)"
-              ><i class="fas fa-trash-alt"></i
+              ><i class="fas fa-trash-alt" *ngIf="userDetails.role==='admin'"></i
             ></a>
             <br />
           </div>

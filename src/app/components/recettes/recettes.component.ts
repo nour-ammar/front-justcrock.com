@@ -3,6 +3,7 @@ import {RecetteService} from './../../services/recette.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import {UserService} from './../../services/user.service'
+import { Profile } from './user-profile.model';
 
 
 @Component({
@@ -15,11 +16,14 @@ export class RecettesComponent implements OnInit {
   file: any;
   categorie:any
   serverErrorMessages:any;
-  userDetails:any;
+  userDetails:Profile;
   rates:any;
    recettes:any=[]
   constructor(private myService: RecetteService,private userService:UserService,private sanitizer: DomSanitizer, private router: Router
-    ) { }
+    ) {
+      this.userDetails = new Profile();
+
+    }
 
   ngOnInit(): void {
     this.myService.getServiceRates().subscribe((res:any)=>{

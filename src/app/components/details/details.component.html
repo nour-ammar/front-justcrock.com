@@ -98,7 +98,7 @@
             <br/>
           </div>
           <!-- / project-info-box -->
-          <button *ngIf="userDetails.role==='user'" [routerLink]="['/edit', recette.Id_recette]" class="btn-edit">edit</button>
+          <button *ngIf="userDetails.role==='admin'" [routerLink]="['/edit', recette.Id_recette]" class="btn-edit">edit</button>
 
         </div>
         <!-- / column -->

@@ -15,6 +15,8 @@ import { ChatComponent } from './components/chat/chat.component';
 import { ResetPComponent } from './components/reset-p/reset-p.component';
 import { NewpasswordComponent } from './components/newpassword/newpassword.component';
 import {EditRecetteComponent} from './components/edit-recette/edit-recette.component'
+import { AvisComponent } from './components/avis/avis.component';
+import { AddAvisComponent } from './components/add-avis/add-avis.component';
 const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'contact',component:ContactComponent},
@@ -29,8 +31,9 @@ const routes: Routes = [
    {path:'chat',component:ChatComponent},
    {path:'reset',component:ResetPComponent},
    {path:'newpassword/:token',component:NewpasswordComponent},
-  {path:'edit/:id',component:EditRecetteComponent}
-
+  {path:'edit/:id',component:EditRecetteComponent},
+  {path:'avis',component:AvisComponent},
+  {path:'addAvis',component:AddAvisComponent}
 
 
 

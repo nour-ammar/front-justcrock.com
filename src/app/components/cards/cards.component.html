@@ -6,7 +6,7 @@
           <div class="col-md-12">
             <div id="grid" class="row">
               <div class="mix col-sm-3 page1 page4 margin30" *ngFor="let recette of recettes ||myArray ; let i = index" >
-                <div class="item-img-wrap" *ngIf="i < 6" >
+                <div class="item-img-wrap" *ngIf="i < 4" >
 
                   <img
                   src="assets/uploads/recettes/{{ recette.Photo }}"    class="img-responsive"
@@ -35,7 +35,7 @@
           <div class="col-md-12">
             <div id="grid" class="row">
               <div class="mix col-sm-3 page1 page4 margin30" *ngFor="let recette of recettes ||myArray ; let i = index" >
-                <div class="item-img-wrap" *ngIf="i >= 6" >
+                <div class="item-img-wrap" *ngIf="i >= 4" >
 
                   <img
                   src="assets/uploads/recettes/{{ recette.Photo }}"    class="img-responsive"

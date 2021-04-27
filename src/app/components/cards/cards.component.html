@@ -5,66 +5,24 @@
         <div class="row">
           <div class="col-md-12">
             <div id="grid" class="row">
-              <div class="mix col-sm-3 page1 page4 margin30">
-                <div class="item-img-wrap">
+              <div class="mix col-sm-3 page1 page4 margin30" *ngFor="let recette of recettes ||myArray ; let i = index" >
+                <div class="item-img-wrap" *ngIf="i < 4" >
+
                   <img
-                    src="https://assets.afcdn.com/recipe/20190704/94666_w1024h768c1cx2689cy1920.jpg"
-                    class="img-responsive"
+                  src="assets/uploads/recettes/{{ recette.Photo }}"    class="img-responsive"
                     alt="workimg"
                     style="max-width:280px; min-width:280px ; max-height: 180px; min-height: 180px;"
                   />
                   <div class="item-img-overlay">
                     <a href="#" class="show-image">
-                      <span ><p class="btnn">Afficher</p></span>
+                      <span ><p class="btnn" (click)="getrecette(recette.Id_recette)">Afficher</p></span>
                     </a>
                   </div>
                 </div>
               </div>
-              <div class="mix col-sm-3 page2 page3 margin30">
-                <div class="item-img-wrap">
-                  <img
-                    src="https://img-3.journaldesfemmes.fr/FtvtAtQb5sx5wJsXDxCV90Gu458=/910x607/smart/f6f16cf7b4ac4cc3bcbc3f8f7eb337e2/ccmcms-jdf/19203394.jpg"
-                    class="img-responsive"
-                    alt="workimg"
-                    style="max-width:280px; min-width:280px ; max-height: 180px; min-height: 180px;"
-                  />
-                  <div class="item-img-overlay">
-                    <a href="#" class="show-image">
-                      <span ><p class="btnn">Afficher</p></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="mix col-sm-3 page3 page2 margin30">
-                <div class="item-img-wrap">
-                  <img
-                    src="https://d1e3z2jco40k3v.cloudfront.net/-/media/ducrosfr-2016/recipes/2000/tajine_marocain_2_2000.jpg?rev=1680d66f83ec4bcab0b489782b22167a&vd=20200704T131624Z&ir=1&width=885&height=498&crop=auto&quality=75&speed=2&hash=71F855E02753BCF6800890FAF7C0C86C"
-                    class="img-responsive"
-                    alt="workimg"
-                    style="max-width:280px; min-width:280px ; max-height: 180px; min-height: 180px;"
-                  />
-                  <div class="item-img-overlay">
-                    <a href="#" class="show-image">
-                      <span ><p class="btnn">Afficher</p></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="mix col-sm-3 page4 margin30">
-                <div class="item-img-wrap">
-                  <img
-                    src="https://res.cloudinary.com/tf-lab/image/upload/w_600,h_337,c_fill,g_auto:subject,q_auto,f_auto/restaurant/fdb095b7-abc1-4c1f-b1c8-ae8545b5938c/df90687e-73f6-4e1f-a1ef-133a7d7d6f42.jpg"
-                    class="img-responsive"
-                    alt="workimg"
-                    style="max-width:280px; min-width:280px ; max-height: 180px; min-height: 180px;"
-                  />
-                  <div class="item-img-overlay">
-                    <a href="#" class="show-image">
-                      <span ><p class="btnn">Afficher</p></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+
+
+
             </div>
             <!--grid-->
           </div>
@@ -76,66 +34,24 @@
         <div class="row">
           <div class="col-md-12">
             <div id="grid" class="row">
-              <div class="mix col-sm-3 page1 page4 margin30">
-                <div class="item-img-wrap">
+              <div class="mix col-sm-3 page1 page4 margin30" *ngFor="let recette of recettes ||myArray ; let i = index" >
+                <div class="item-img-wrap" *ngIf="i >= 4" >
+
                   <img
-                    src="https://assets.afcdn.com/recipe/20190704/94666_w1024h768c1cx2689cy1920.jpg"
-                    class="img-responsive"
+                  src="assets/uploads/recettes/{{ recette.Photo }}"    class="img-responsive"
                     alt="workimg"
                     style="max-width:280px; min-width:280px ; max-height: 180px; min-height: 180px;"
                   />
                   <div class="item-img-overlay">
                     <a href="#" class="show-image">
-                      <span ><p class="btnn">Afficher</p></span>
+                      <span ><p class="btnn" (click)="getrecette(recette.Id_recette)">Afficher</p></span>
                     </a>
                   </div>
                 </div>
               </div>
-              <div class="mix col-sm-3 page2 page3 margin30">
-                <div class="item-img-wrap">
-                  <img
-                    src="https://img-3.journaldesfemmes.fr/FtvtAtQb5sx5wJsXDxCV90Gu458=/910x607/smart/f6f16cf7b4ac4cc3bcbc3f8f7eb337e2/ccmcms-jdf/19203394.jpg"
-                    class="img-responsive"
-                    alt="workimg"
-                    style="max-width:280px; min-width:280px ; max-height: 180px; min-height: 180px;"
-                  />
-                  <div class="item-img-overlay">
-                    <a href="#" class="show-image">
-                      <span ><p class="btnn">Afficher</p></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="mix col-sm-3 page3 page2 margin30">
-                <div class="item-img-wrap">
-                  <img
-                    src="https://d1e3z2jco40k3v.cloudfront.net/-/media/ducrosfr-2016/recipes/2000/tajine_marocain_2_2000.jpg?rev=1680d66f83ec4bcab0b489782b22167a&vd=20200704T131624Z&ir=1&width=885&height=498&crop=auto&quality=75&speed=2&hash=71F855E02753BCF6800890FAF7C0C86C"
-                    class="img-responsive"
-                    alt="workimg"
-                    style="max-width:280px; min-width:280px ; max-height: 180px; min-height: 180px;"
-                  />
-                  <div class="item-img-overlay">
-                    <a href="#" class="show-image">
-                      <span ><p class="btnn">Afficher</p></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="mix col-sm-3 page4 margin30">
-                <div class="item-img-wrap">
-                  <img
-                    src="https://res.cloudinary.com/tf-lab/image/upload/w_600,h_337,c_fill,g_auto:subject,q_auto,f_auto/restaurant/fdb095b7-abc1-4c1f-b1c8-ae8545b5938c/df90687e-73f6-4e1f-a1ef-133a7d7d6f42.jpg"
-                    class="img-responsive"
-                    alt="workimg"
-                    style="max-width:280px; min-width:280px ; max-height: 180px; min-height: 180px;"
-                  />
-                  <div class="item-img-overlay">
-                    <a href="#" class="show-image">
-                      <span ><p class="btnn">Afficher</p></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+
+
+
             </div>
             <!--grid-->
           </div>

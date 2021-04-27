@@ -9,3 +9,8 @@ input{
 .image{
   padding: 2%;
 }
+@media (min-width: 800px) {
+  .col-12{
+    padding:0 43%;
+  }
+}

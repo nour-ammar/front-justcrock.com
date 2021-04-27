@@ -4,6 +4,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import {UserService} from './../../services/user.service'
 import { Profile } from './user-profile.model';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class RecettesComponent implements OnInit {
   serverErrorMessages:any;
   userDetails:Profile;
   rates:any;
-   recettes:any=[]
+   recettes:any=[];
+   p:any;
   constructor(private myService: RecetteService,private userService:UserService,private sanitizer: DomSanitizer, private router: Router
     ) {
       this.userDetails = new Profile();

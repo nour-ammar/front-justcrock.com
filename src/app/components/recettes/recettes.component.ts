@@ -31,21 +31,15 @@ export class RecettesComponent implements OnInit {
     this.myService.getServiceRates().subscribe((res:any)=>{
       this.rates=res
     })
-   this.getRecette()
+    this.getRecette()
+
    this.userService.getUserProfile().subscribe((data:any)=>{
     this.userDetails=data.user
   })
 
 
   }
-  getfile(f: any) {
-    this.file = '';
-    this.file = this.sanitizer.bypassSecurityTrustResourceUrl(
-      'assets/uploads/recettes/' + f
-    );
-    console.log(f);
 
-  }
   deleteRecette(id: string) {
     console.log(id);
 
@@ -53,8 +47,11 @@ export class RecettesComponent implements OnInit {
       .deleteService(id)
 
       .subscribe((data) => {
-        return this.getRecette();
-      });
+        console.log(data)
+        this.getRecette()
+        this.router.navigate(['recette'])
+
+      })
   }
   getRecette(){
 
@@ -86,7 +83,6 @@ export class RecettesComponent implements OnInit {
       return b.averagerate - a.averagerate;
     }
   });
- console.log(this.myArray)
     })
 
   }

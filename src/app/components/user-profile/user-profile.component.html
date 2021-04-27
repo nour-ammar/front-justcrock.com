@@ -9,7 +9,7 @@
       <tr>
         <img (click)="open()"
         class="rounded-circle avatar-xl img-thumbnail"
-         src="assets/uploads/recettes/{{ userDetails.imageUrl }}"
+         src="assets/uploads/images/{{ userDetails.imageUrl }}"
           style="color:white ;margin-left:150px;width:100px "/>
           <input  *ngIf="modifie" type="file"       accept="image/png, image/jpeg"
           (change)="onSelectimage($event)" /><button *ngIf="modifie" (click)="modifierimage()">modifier image</button>

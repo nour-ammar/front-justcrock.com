@@ -86,4 +86,32 @@ export class RecetteService {
 
     return this.http.put('http://localhost:3000/api/comment/editComment', body);
   }
+  editRateService(id:any,rateId:any,rateid:any,rates:any){
+    const  body={
+       id:rateid,
+      Id_recette:id,
+      UserId:rateId,
+      rates:rates
+  }
+    return this.http.put(`http://localhost:3000/api/rate/editrate`,  body)
+
+  }
+
+  addRateService(id:any,raterId:any,rates:any){
+  const  body={
+        Id_recette:id,
+        UserId:raterId,
+        rates:rates
+    }
+    return this.http.post(`http://localhost:3000/api/rate/addrate`,body)
+
+  }
+  getRateService(id:any){
+    return this.http.get('http://localhost:3000/api/rate/' + id);
+
+  }
+  getServiceRates(){
+    return this.http.get('http://localhost:3000/api/rate/' );
+
+  }
 }

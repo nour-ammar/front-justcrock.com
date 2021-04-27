@@ -14,7 +14,10 @@ email:any;
 password:any;
 registerForm: any;
 submitted = false;
-role:any="user"
+role:any="user";
+serverErrorMessages:any;
+showSuccessMessage:any
+
   constructor(private myService: SignUpService,private formBuilder: FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
@@ -25,24 +28,7 @@ role:any="user"
       role:['user']
   });
   }
-  adduser() {
 
-
-    this.myService
-      .addService(
-        this.FullName,
-        this.email,
-        this.password,
-        this.role
-    )
-      .subscribe((data) => {
-        console.log("user added", data)
-        this.router.navigateByUrl('/login')
-
-
-
-      })
-    }
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
@@ -52,8 +38,26 @@ role:any="user"
       if (this.registerForm.invalid) {
           return;
       }
-      this.adduser()
-      // display form values on success
+      this.myService
+      .addService(
+        this.FullName,
+        this.email,
+        this.password,
+        this.role
+    )
+      .subscribe( (res:any)  =>{
+
+
+        this.showSuccessMessage=true
+        setTimeout(()=>this.showSuccessMessage=false,4000)
+      this.router.navigateByUrl('/login')
+
+      },
+            err =>{
+              console.log(err.error)
+              this.serverErrorMessages=err.error.error
+
+            })
   }
 
 }

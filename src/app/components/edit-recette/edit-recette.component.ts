@@ -14,24 +14,32 @@ export class EditRecetteComponent implements OnInit {
   loginForm: any;
   submitted = false;
   id: any;
+  data: any;
   constructor(
     private myservice: RecetteService,
     private router: Router,
     private activateroute: ActivatedRoute,
     private formBuilder: FormBuilder
   ) {
-    this.loginForm = this.formBuilder.group({
-      titre: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      temps_Préparation: ['', [Validators.required]],
-      nombre_personne: ['', [Validators.required]],
-      temps_cuisson: ['', [Validators.required]],
-      image: ['', [Validators.required]],
-    });
+    this.createForm();
   }
 
   ngOnInit(): void {
     this.id = this.activateroute.snapshot.params.id;
+  }
+  createForm() {
+    this.id = this.activateroute.snapshot.params.id;
+    this.myservice.getrecetteById(this.id).subscribe((data: any) => {
+      this.loginForm = this.formBuilder.group({
+        description: [data.Description],
+        ingredient: [data.Ingredient],
+        preparation: [data.Preparation],
+        temps_Préparation: [data.temps_Preparation],
+        nombre_personne: [data.nombre_personne],
+        temps_cuisson: [data.temps_cuisson],
+        image: [''],
+      });
+    });
   }
   onSelectimage(event: any) {
     this.files.push(event.target.files[0]);
@@ -40,19 +48,26 @@ export class EditRecetteComponent implements OnInit {
     this.submitted = true;
 
     // stop here if form is invalid
-
-    this.loginForm.image = this.files[0];
+    this.id = this.activateroute.snapshot.params.id;
+    this.myservice.getrecetteById(this.id).subscribe((data: any) => {console.log(data)});
+    console.log(this.data)
+    if(this.loginForm.image===''){
+      this.loginForm.image =this.data.Photo
+    }else{
+      this.loginForm.image = this.files[0];
+    }
     console.log(this.loginForm.image);
 
     this.myservice
       .editService(
-
         this.loginForm.value.description,
+        this.loginForm.value.ingredient,
+        this.loginForm.value.preparation,
         this.loginForm.value.temps_Préparation,
         this.loginForm.value.temps_cuisson,
         this.loginForm.value.nombre_personne,
         this.loginForm.image,
-        this.id,
+        this.id
       )
       .subscribe((data) => {
         console.log(this.loginForm.image);

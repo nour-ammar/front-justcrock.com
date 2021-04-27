@@ -1,81 +1,60 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <app-navbar></app-navbar>
 
 <div id="avis">
   <br/> <br/>
-<section class="expert" id="expert" >
-  <div class="content" >
-    <div class='title'>
-      <h2 class="titleText"> <span>A</span>vis Membres  </h2>
-    </div>
-  <section id="team" class="pb-5">
-
+  <div class="box">
     <div class="container">
-        <div class="row">
-            <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let member of avis">
-                <div class="image-flip" >
-                    <div class="mainflip flip-0">
-                        <div class="frontside" >
-                            <div class="card">
-                                <div class="card-body text-center">
-                                 <div *ngFor="let user of users">
-                                    >
-                                    <img  *ngIf="user._id === member.UserId"  class=" img-fluid" src={{member.image}} alt="card image">
+      <button class="btn1" routerLink="/addrecette" *ngIf="userDetails.role==='admin'">
+        Ajouter Avis<i class="fa fa-plus"></i>
+      </button>
+      <br/> <br/>
+     	<div class="row">
 
-                                    <h4 class="card-title" style='padding: 2%;font-weight: bolder;'>{{member.name}}</h4>
-                                  </div>
-                                    <p class="card-text">{{member.avis}}</p>
-                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn"><i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">{{member.name}}</h4>
-                                    <p class="card-text">{{member.avis}}</p>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
+
+        <div class="col-12 col-md-6 col-lg-3 " *ngFor="let member of avis">
+          <div class="card recette" style="border: 1px solid white;height: 300px;" >
+            <div *ngFor="let user of users">
+              <img  class="rounded-circle avatar-xl img-thumbnail" style="color:white ;margin-left:80px;width:100px "
+              *ngIf="user.id === member.UserId"  src="assets/uploads/images/{{user.imageUrl}}" alt="card image">
+              <div class="title">
+                <h4  *ngIf="user.id === member.UserId">{{user.fullName}}</h4>
+              </div>
             </div>
-            <!-- ./Team member -->
-            <!-- Team member -->
+            <div class="card-body">
 
-            <!-- ./Team member -->
-            <!-- Team member -->
+              <p class="card-text"  >
+                {{ member.avis }}
+              </p>
 
-            <!-- ./Team member -->
+              <a
 
+              (click)="deleteavis(member.id)"
+              ><i class="fas fa-trash-alt" *ngIf="userDetails.role==='admin'"></i
+            ></a>
+            <a>  <i
+              class="fa fa-check"
+              (click)="editAvis( member.id)"
+              aria-hidden="true" *ngIf="userDetails.id===member.UserId"
+            ></i></a>
+              <br />
+            </div>
+          </div>
         </div>
-    </div>
-</section>
 
-<!-- Team -->
+		</div>
     </div>
-</section>
+</div>
+<!-- Team -->
 </div>
 <app-footer></app-footer>
+
+
+
+
+
+

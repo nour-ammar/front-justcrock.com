@@ -123,8 +123,15 @@
         <hr class="mb40" />
         <h4 class="mb40 text-uppercase font500">Comments</h4>
         <div class="media mb40" *ngFor="let comment of comments">
-          <i class="d-flex mr-3 fa fa-user-circle-o fa-3x" style="color:white"></i>
-
+          <div *ngFor="let user of users">
+            <img
+              *ngIf="user.id === comment.UserId"
+              src="assets/uploads/images/{{user.imageUrl}}"
+              class="rounded-circle avatar-xl img-thumbnail"
+              alt="profile-image"
+              style="width: 50px"
+            />
+          </div>
           <div class="media-body">
             <div *ngFor="let user of users">
               <h5

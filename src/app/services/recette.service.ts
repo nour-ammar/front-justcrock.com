@@ -122,4 +122,8 @@ export class RecetteService {
     return this.http.get('http://localhost:3000/api/avis/');
 
   }
+  editAvisService(body:any){
+    return this.http.put('http://localhost:3000/api/avis/editAvis',body );
+
+  }
 }

@@ -7,8 +7,12 @@
     <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th colspan="2" style="text-align:center">User Profile </th>
-
+        <img (click)="open()"
+        class="rounded-circle avatar-xl img-thumbnail"
+         src="assets/uploads/recettes/{{ userDetails.imageUrl }}"
+          style="color:white ;margin-left:150px;width:100px "/>
+          <input  *ngIf="modifie" type="file"       accept="image/png, image/jpeg"
+          (change)="onSelectimage($event)" /><button *ngIf="modifie" (click)="modifierimage()">modifier image</button>
       </tr>
     </thead>
     <tbody>

@@ -42,14 +42,14 @@
           <!-- / project-info-box -->
 
           <div class="project-info-box">
-            <p ><b style="color: green; font-weight: bolder; font-size: 15px">Ingrédients:</b></p>
-            <p><b style="color: green; font-weight: bolder; font-size: 15px">Cuisinier:</b> 14.02.2020</p>
-            <p><b style="color: green; font-weight: bolder; font-size: 15px">Temps de préparation:</b> James Doe</p>
-            <p><b style="color: green; font-weight: bolder; font-size: 15px">Temps de cuisson:</b> Illustrator</p>
-            <p class="mb-0"><b style="color: green; font-weight: bolder; font-size: 15px">Ustentils:</b></p>
+            <p ><b style="color: green; font-weight: bolder; font-size: 15px">Ingrédients: </b>{{recette.Ingredient}}</p>
+            <p><b style="color: green; font-weight: bolder; font-size: 15px">Mode de prépartion: </b> {{recette.Preparation}}</p>
+            <p><b style="color: green; font-weight: bolder; font-size: 15px">Temps de préparation: </b> {{recette.temps_Preparation}}</p>
+            <p><b style="color: green; font-weight: bolder; font-size: 15px">Temps de cuisson: </b>{{recette.temps_cuisson}}</p>
+            <p class="mb-0"><b style="color: green; font-weight: bolder; font-size: 15px">Nombre du personnes: </b>{{recette.nombre_personne}}</p>
           </div>
           <!-- / project-info-box -->
-          <button [routerLink]="['/edit', recette.Id_recette]" class="btn-edit">edit</button>
+          <button *ngIf="userDetails.role==='user'" [routerLink]="['/edit', recette.Id_recette]" class="btn-edit">edit</button>
 
         </div>
         <!-- / column -->

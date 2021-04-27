@@ -43,7 +43,7 @@ constructor( private activateroute: ActivatedRoute,
     })
     this.myService.getUserProfile().subscribe((data:any)=>{
       this.userDetails=data.user
-      console.log(this.userDetails)
+      console.log(this.userDetails.role)
     })
     this.registerForm = this.formBuilder.group({
       Comment: [' ', [Validators.required]],

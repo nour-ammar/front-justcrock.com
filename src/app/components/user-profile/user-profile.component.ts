@@ -9,6 +9,8 @@ import { Profile } from './user-profile.model';
 })
 export class UserProfileComponent implements OnInit {
  userDetails:Profile;
+ modifie:boolean = false;
+ image:any
   constructor(private userService:UserService,private router:Router) {
     this.userDetails = new Profile();
    }
@@ -23,5 +25,18 @@ export class UserProfileComponent implements OnInit {
     this.userService.deleteToken()
     this.router.navigate(['/login'])
   }
+    onSelectimage(event: any) {
+      this.image=event.target.files[0]
+
+    }
+    open(){
+this.modifie=true
+    }
+    modifierimage(){
+      this.userService.changeService(this.image,this.userDetails.id).subscribe((data)=>{
+        console.log(data)
+      })
+    }
+
 
 }

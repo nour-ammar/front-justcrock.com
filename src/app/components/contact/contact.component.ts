@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from './../../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -12,9 +13,9 @@ export class ContactComponent implements OnInit {
   obj:any;
   contactForm:any;
   submitted:any;
-  showSuccessMessage:any
+  showSuccessMessage:any=false;
   serverErrorMessages:any
-  constructor(private myService:UserService,private formBuilder: FormBuilder) { }
+  constructor(private myService:UserService,private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
      this.contactForm = this.formBuilder.group({
@@ -41,9 +42,12 @@ onSubmit() {
   this.myService
       .sendService(this.obj)
       .subscribe((data) => {
+        this.showSuccessMessage=true;
+        setTimeout(()=>this.showSuccessMessage=false,4000)
         console.log('mail sent', data);
-        location.reload()
-   });
+        this.router.navigate(['home'])
+
+         });
   // display form values on success
 }
 

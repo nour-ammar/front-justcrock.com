@@ -47,12 +47,13 @@ body {
   width: 140px;
   height: 50px;
   display: inline-block;
-  background-color: #6fa523;
-  border: 2px solid #6fa523;
+  background-color: #578613;
+  border: 2px solid #578a10;
   color: #fff;
   cursor: pointer;
   transition: all 0.2s linear;
   text-align: center;
+  border-radius: 0.2rem;
 }
 
 .chat_window {
@@ -197,17 +198,7 @@ body {
     height: 100%;
     padding-bottom: 80%;
   }
-  .but {
-    width: 140px;
-    height: 50px;
-    display: inline-block;
-    background-color: #6fa523;
-    border: 2px solid #6fa523;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.2s linear;
-    text-align: center;
-  }
+  
 
   .chat_window {
     position: absolute;

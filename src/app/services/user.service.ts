@@ -64,6 +64,12 @@ noAuthHeader={headers:new HttpHeaders({'NoAuth':'True'})}
     return this.http.post('http://localhost:3000/api/contact/sendEmail',body)
 
   }
-  
+  changeService(image:any,id:any){
+    const body = new FormData();
+    body.append('id', id);
+    body.append('file', image);
+    return this.http.put('http://localhost:3000/api/user/editimage', body);
+
+  }
 
 }

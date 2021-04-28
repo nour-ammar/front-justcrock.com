@@ -3,6 +3,8 @@ import {RecetteService} from './../../services/recette.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import {UserService} from './../../services/user.service'
+import { Profile } from './user-profile.model';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @Component({
@@ -15,33 +17,29 @@ export class RecettesComponent implements OnInit {
   file: any;
   categorie:any
   serverErrorMessages:any;
-  userDetails:any;
+  userDetails:Profile;
   rates:any;
-
+   recettes:any=[];
+   p:any;
   constructor(private myService: RecetteService,private userService:UserService,private sanitizer: DomSanitizer, private router: Router
-    ) { }
+    ) {
+      this.userDetails = new Profile();
+
+    }
 
   ngOnInit(): void {
     this.myService.getServiceRates().subscribe((res:any)=>{
       this.rates=res
-      console.log(this.rates)
     })
-   this.getRecette()
+    this.getRecette()
+
    this.userService.getUserProfile().subscribe((data:any)=>{
     this.userDetails=data.user
-    console.log(this.userDetails.role)
   })
 
 
   }
-  getfile(f: any) {
-    this.file = '';
-    this.file = this.sanitizer.bypassSecurityTrustResourceUrl(
-      'assets/uploads/recettes/' + f
-    );
-    console.log(f);
 
-  }
   deleteRecette(id: string) {
     console.log(id);
 
@@ -50,16 +48,17 @@ export class RecettesComponent implements OnInit {
 
       .subscribe((data) => {
         console.log(data)
-        return this.getRecette();
-      });
+        this.getRecette()
+        this.router.navigate(['recette'])
+
+      })
   }
   getRecette(){
 
     this.myService.getService().subscribe((data:any) => {
-      console.log(data);
       this.myArray = data;
 
-      this.myArray = this.rates.map((recette: any) => {
+      this.recettes = this.myArray.map((recette: any) => {
         var sum = 0;
          var nbr=0
 
@@ -84,7 +83,6 @@ export class RecettesComponent implements OnInit {
       return b.averagerate - a.averagerate;
     }
   });
- console.log(this.myArray)
     })
 
   }

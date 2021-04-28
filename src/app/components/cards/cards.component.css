@@ -94,6 +94,7 @@ body{margin-top:20px;}
   margin-top: 40%;
   color:white ;
   font-weight: bolder;
+  cursor: pointer;
 }
 .item-img-wrap
 {

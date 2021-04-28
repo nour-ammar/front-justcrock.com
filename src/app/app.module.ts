@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -28,10 +27,13 @@ import { DetailsComponent } from './components/details/details.component'
 import { RouterModule, Routes } from '@angular/router';
 import { ChatComponent } from './components/chat/chat.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel'; // ---------- Important
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ResetPComponent } from './components/reset-p/reset-p.component';
 import { NewpasswordComponent } from './components/newpassword/newpassword.component';
 import { EditRecetteComponent } from './components/edit-recette/edit-recette.component';
+import { AvisComponent } from './components/avis/avis.component';
+import { AddAvisComponent } from './components/add-avis/add-avis.component';
+import { EditAvisComponent } from './components/edit-avis/edit-avis.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,9 @@ import { EditRecetteComponent } from './components/edit-recette/edit-recette.com
     ResetPComponent,
     NewpasswordComponent,
     EditRecetteComponent,
+    AvisComponent,
+    AddAvisComponent,
+    EditAvisComponent,
      ],
   imports: [
     BrowserModule,
@@ -66,7 +71,9 @@ import { EditRecetteComponent } from './components/edit-recette/edit-recette.com
     ReactiveFormsModule,
     RouterModule,
     AppRoutingModule,
-    MatCarouselModule.forRoot() // ---------- Important
+    MatCarouselModule.forRoot() ,// ---------- Important
+    NgxPaginationModule
+
 
 
   ],

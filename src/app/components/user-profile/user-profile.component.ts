@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from './../../services/user.service'
 import {Router} from '@angular/router'
+import { Profile } from './user-profile.model';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-userDetails:any;
-  constructor(private userService:UserService,private router:Router) { }
+ userDetails:Profile;
+ modifie:boolean = false;
+ image:any
+  constructor(private userService:UserService,private router:Router) {
+    this.userDetails = new Profile();
+   }
 
   ngOnInit(): void {
     this.userService.getUserProfile().subscribe((data:any)=>{
@@ -20,5 +25,18 @@ userDetails:any;
     this.userService.deleteToken()
     this.router.navigate(['/login'])
   }
+    onSelectimage(event: any) {
+      this.image=event.target.files[0]
+
+    }
+    open(){
+this.modifie=true
+    }
+    modifierimage(){
+      this.userService.changeService(this.image,this.userDetails.id).subscribe((data)=>{
+        console.log(data)
+      })
+    }
+
 
 }

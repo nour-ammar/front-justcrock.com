@@ -19,8 +19,8 @@ export class RecetteService {
     ingredient:string,
     preparation:string,
     temps_Preparation: any,
-    temps_cuisson: any,
     nombre_personne: any,
+    temps_cuisson: any,
     image: any,
     id: any
   ) {
@@ -29,8 +29,8 @@ export class RecetteService {
     body.append('Ingredient', ingredient);
     body.append('Preparation', preparation);
     body.append('temps_Preparation', temps_Preparation);
-    body.append('temps_cuisson', temps_cuisson);
     body.append('nombre_personne', nombre_personne);
+    body.append('temps_cuisson', temps_cuisson);
     body.append('Photo', image);
 
     return this.http.put('http://localhost:3000/api/recette/' + id, body);

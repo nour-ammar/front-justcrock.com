@@ -1,28 +1,40 @@
-<div style="padding: 5% 0;">
+<div style="padding: 5% 0">
   <ngb-carousel>
     <ng-template ngbSlide>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div id="grid" class="row">
-              <div class="mix col-sm-3 page1 page4 margin30" *ngFor="let recette of recettes ||myArray ; let i = index" >
-                <div class="item-img-wrap" *ngIf="i < 4" >
-
+              <div
+                class="mix col-sm-3 page1 page4 margin30"
+                *ngFor="let recette of recettes || myArray; let i = index"
+              >
+                <div class="item-img-wrap" *ngIf="i < 4">
                   <img
-                  src="assets/uploads/recettes/{{ recette.Photo }}"    class="img-responsive"
+                    src="assets/uploads/recettes/{{ recette.Photo }}"
+                    class="img-responsive"
                     alt="workimg"
-                    style="max-width:280px; min-width:280px ; max-height: 180px; min-height: 180px;"
+                    style="
+                      max-width: 280px;
+                      min-width: 280px;
+                      max-height: 180px;
+                      min-height: 180px;
+                    "
                   />
                   <div class="item-img-overlay">
-                    <a href="#" class="show-image">
-                      <span ><p class="btnn" (click)="getrecette(recette.Id_recette)">Afficher</p></span>
+                    <a class="show-image">
+                      <span
+                        ><p
+                          class="btnn"
+                          (click)="getrecette(recette.Id_recette)"
+                        >
+                          Afficher
+                        </p></span
+                      >
                     </a>
                   </div>
                 </div>
               </div>
-
-
-
             </div>
             <!--grid-->
           </div>
@@ -34,24 +46,36 @@
         <div class="row">
           <div class="col-md-12">
             <div id="grid" class="row">
-              <div class="mix col-sm-3 page1 page4 margin30" *ngFor="let recette of recettes ||myArray ; let i = index" >
-                <div class="item-img-wrap" *ngIf="i >= 4" >
-
+              <div
+                class="mix col-sm-3 page1 page4 margin30"
+                *ngFor="let recette of recettes || myArray; let i = index"
+              >
+                <div class="item-img-wrap" *ngIf="i < 4">
                   <img
-                  src="assets/uploads/recettes/{{ recette.Photo }}"    class="img-responsive"
+                    src="assets/uploads/recettes/{{ recette.Photo }}"
+                    class="img-responsive"
                     alt="workimg"
-                    style="max-width:280px; min-width:280px ; max-height: 180px; min-height: 180px;"
+                    style="
+                      max-width: 280px;
+                      min-width: 280px;
+                      max-height: 180px;
+                      min-height: 180px;
+                    "
                   />
                   <div class="item-img-overlay">
-                    <a href="#" class="show-image">
-                      <span ><p class="btnn" (click)="getrecette(recette.Id_recette)">Afficher</p></span>
+                    <a class="show-image">
+                      <span
+                        ><p
+                          class="btnn"
+                          (click)="getrecette(recette.Id_recette)"
+                        >
+                          Afficher
+                        </p></span
+                      >
                     </a>
                   </div>
                 </div>
               </div>
-
-
-
             </div>
             <!--grid-->
           </div>

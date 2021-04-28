@@ -1,6 +1,6 @@
 # npm resolution error report
 
-2021-04-27T06:27:45.058Z
+2021-04-27T09:27:01.748Z
 
 While resolving: front-end@0.0.0
 Found: @angular/core@11.2.11

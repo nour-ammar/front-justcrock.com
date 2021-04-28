@@ -17,6 +17,7 @@ import { NewpasswordComponent } from './components/newpassword/newpassword.compo
 import {EditRecetteComponent} from './components/edit-recette/edit-recette.component'
 import { AvisComponent } from './components/avis/avis.component';
 import { AddAvisComponent } from './components/add-avis/add-avis.component';
+import { EditAvisComponent } from './components/edit-avis/edit-avis.component';
 const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'contact',component:ContactComponent},
@@ -33,7 +34,8 @@ const routes: Routes = [
    {path:'newpassword/:token',component:NewpasswordComponent},
   {path:'edit/:id',component:EditRecetteComponent},
   {path:'avis',component:AvisComponent},
-  {path:'addAvis',component:AddAvisComponent}
+  {path:'addAvis',component:AddAvisComponent},
+  {path:'editAvis/:id',component:EditAvisComponent}
 
 
 

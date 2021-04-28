@@ -33,6 +33,7 @@ import { NewpasswordComponent } from './components/newpassword/newpassword.compo
 import { EditRecetteComponent } from './components/edit-recette/edit-recette.component';
 import { AvisComponent } from './components/avis/avis.component';
 import { AddAvisComponent } from './components/add-avis/add-avis.component';
+import { EditAvisComponent } from './components/edit-avis/edit-avis.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { AddAvisComponent } from './components/add-avis/add-avis.component';
     EditRecetteComponent,
     AvisComponent,
     AddAvisComponent,
+    EditAvisComponent,
      ],
   imports: [
     BrowserModule,

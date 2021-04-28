@@ -71,5 +71,9 @@ noAuthHeader={headers:new HttpHeaders({'NoAuth':'True'})}
     return this.http.put('http://localhost:3000/api/user/editimage', body);
 
   }
+  deleteAvisService(id:any){
+    return this.http.delete('http://localhost:3000/api/avis/'+id);
+
+  }
 
 }

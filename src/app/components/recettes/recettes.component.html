@@ -28,8 +28,7 @@
         <div
           class="col-12 col-md-6 col-lg-3"
           *ngFor="
-            let recette of recettes || myArray
-              | paginate: { itemsPerPage: 4, currentPage: p }
+            let recette of recettes || myArray 
           "
         >
           <div class="card recette" style="border: 1px solid white">
@@ -87,7 +86,7 @@
             padding: 10px;
           "
         >
-          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
         </div>
       </div>
     </div>

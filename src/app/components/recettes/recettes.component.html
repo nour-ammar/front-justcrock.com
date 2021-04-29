@@ -29,7 +29,7 @@
           class="col-12 col-md-6 col-lg-3"
           *ngFor="
             let recette of recettes || myArray
-              | paginate: { itemsPerPage: 3, currentPage: p }
+              | paginate: { itemsPerPage: 4, currentPage: p }
           "
         >
           <div class="card recette" style="border: 1px solid white">
@@ -50,10 +50,25 @@
               <p class="card-text" style="color: white">
                 {{ recette.Description }}
               </p>
+              <ng-template #content let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Confirmation!</h4>
 
+                  <!-- <button type="button" class="close" aria-label="Close" (click)="('Save click')"> -->
+                  <!-- </button> -->
+                </div>
+                <div class="modal-body">
+                  <p>cette recette va etre supprimer deffinitivement , etes vous sur ?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" (click)="deleteRecette(recette.Id_recette)">Supprimer</button>
+                  <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Annuler/fermer</button>
+
+                </div>
+              </ng-template>
               <a
                 style="margin-left: 200px; background: #42b32f"
-                (click)="deleteRecette(recette.Id_recette)"
+                (click)="open(content)"
                 ><i
                   class="fas fa-trash-alt"
                   *ngIf="userDetails.role === 'admin'"

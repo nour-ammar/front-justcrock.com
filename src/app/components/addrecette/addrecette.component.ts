@@ -62,6 +62,8 @@ export class AddrecetteComponent implements OnInit {
       .subscribe((data) => {
         console.log(this.loginForm.image)
         console.log('recette added', data);
+                this.router.navigate(['recette'])
+
 
       });
   }

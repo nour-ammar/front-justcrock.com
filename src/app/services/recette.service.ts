@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class RecetteService {
   recettes: any;
   http: HttpClient;
-  urlApi = 'http://localhost:3000/api/recette';
+  urlApi = 'http://localhost:3000/api';
 
   constructor(private httpClient: HttpClient) {
     this.http = httpClient;
@@ -33,11 +33,11 @@ export class RecetteService {
     body.append('nombre_personne', nombre_personne);
     body.append('Photo', image);
 
-    return this.http.put('http://localhost:3000/api/recette/' + id, body);
+    return this.http.put(this.urlApi+'/recette/' + id, body);
   }
 
   deleteService(id: String) {
-    return this.http.delete('http://localhost:3000/api/recette/' + id);
+    return this.http.delete(this.urlApi+'/recette/' + id);
   }
   addService(
     description: string,
@@ -60,10 +60,10 @@ export class RecetteService {
     return this.http.post(this.urlApi, body);
   }
   getrecetteById(id: string) {
-    return this.http.get('http://localhost:3000/api/recette/' + id);
+    return this.http.get(this.urlApi+'/recette/' + id);
   }
   getServiceComments(id: any) {
-    return this.http.get('http://localhost:3000/api/comment/' + id);
+    return this.http.get(this.urlApi+'/comment/' + id);
   }
   addServiceComment(idUser: any, comment: any, idrecette: any) {
     const body = {
@@ -71,10 +71,10 @@ export class RecetteService {
       UserId: idUser,
       Id_recette: idrecette,
     };
-    return this.http.post('http://localhost:3000/api/comment/addComment', body);
+    return this.http.post(this.urlApi+'/comment/addComment', body);
   }
   deleteServiceComment(id: any) {
-    return this.http.delete('http://localhost:3000/api/comment/' + id);
+    return this.http.delete(this.urlApi+'/comment/' + id);
   }
   editServiceComment(commentaire: any, id: any, idrecette: any, userId: any) {
     const body = {
@@ -84,7 +84,7 @@ export class RecetteService {
       UserId: userId,
     };
 
-    return this.http.put('http://localhost:3000/api/comment/editComment', body);
+    return this.http.put(this.urlApi+'/comment/editComment', body);
   }
   editRateService(id:any,rateId:any,rateid:any,rates:any){
     const  body={
@@ -93,7 +93,7 @@ export class RecetteService {
       UserId:rateId,
       rates:rates
   }
-    return this.http.put(`http://localhost:3000/api/rate/editrate`,  body)
+    return this.http.put(this.urlApi+'/rate/editrate',  body)
 
   }
 
@@ -103,27 +103,27 @@ export class RecetteService {
         UserId:raterId,
         rates:rates
     }
-    return this.http.post(`http://localhost:3000/api/rate/addrate`,body)
+    return this.http.post(this.urlApi+'/rate/addrate',body)
 
   }
   getRateService(id:any){
-    return this.http.get('http://localhost:3000/api/rate/' + id);
+    return this.http.get(this.urlApi+'/rate/' + id);
 
   }
   getServiceRates(){
-    return this.http.get('http://localhost:3000/api/rate/' );
+    return this.http.get(this.urlApi+'/rate/' );
 
   }
   addAvisService(body:any){
-    return this.http.post('http://localhost:3000/api/avis/addAvis',body );
+    return this.http.post(this.urlApi+'/avis/addAvis',body );
 
   }
   getAvisService(){
-    return this.http.get('http://localhost:3000/api/avis/');
+    return this.http.get(this.urlApi+'/avis/');
 
   }
   editAvisService(body:any){
-    return this.http.put('http://localhost:3000/api/avis/editAvis',body );
+    return this.http.put(this.urlApi+'/avis/editAvis',body );
 
   }
 }

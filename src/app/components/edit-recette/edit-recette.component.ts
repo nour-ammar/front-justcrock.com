@@ -34,7 +34,7 @@ export class EditRecetteComponent implements OnInit {
         description: [data.Description],
         ingredient: [data.Ingredient],
         preparation: [data.Preparation],
-        temps_Préparation: [data.temps_Preparation],
+        temps_Preparation: [data.temps_Preparation],
         nombre_personne: [data.nombre_personne],
         temps_cuisson: [data.temps_cuisson],
         image: [''],
@@ -63,9 +63,9 @@ export class EditRecetteComponent implements OnInit {
         this.loginForm.value.description,
         this.loginForm.value.ingredient,
         this.loginForm.value.preparation,
-        this.loginForm.value.temps_Préparation,
-        this.loginForm.value.temps_cuisson,
+        this.loginForm.value.temps_Preparation,
         this.loginForm.value.nombre_personne,
+        this.loginForm.value.temps_cuisson,
         this.loginForm.image,
         this.id
       )

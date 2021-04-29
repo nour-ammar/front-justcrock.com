@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import {UserService} from './../../services/user.service'
 import {Router} from '@angular/router'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private myService:UserService,private router:Router,private formBuilder: FormBuilder) { }
+  constructor(private myService:UserService,private router:Router,private formBuilder: FormBuilder,private toastr: ToastrService) { }
   model={
     email:'',
     password:''
@@ -43,12 +44,23 @@ submitted = false;
     // display form values on success
     this.myService.login(this.registerForm.value).subscribe(
       (res:any)  =>{
-      this.myService.setToken(res['token'])
-      this.router.navigateByUrl('/userProfile')
-      },
-      err =>{
-         this.serverErrorMessages=err.error.message
-      }
+
+    console.log(res)
+        if(res['status']==='blocked'){
+          this.toastr.error("votre compte a éte blocker ")
+
+
+        }else {
+          this.myService.setToken(res['token'])
+         this.router.navigate(['userProfile',  { id: this.myService.getUserPayload().id}])
+        }
+
+              },
+              err =>{
+                this.toastr.error(err.error.message)
+
+
+              }
     )
   }
 

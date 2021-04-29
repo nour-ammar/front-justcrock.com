@@ -1,16 +1,16 @@
 # npm resolution error report
 
-2021-04-27T06:27:45.058Z
+2021-04-28T10:08:44.177Z
 
-While resolving: front-end@0.0.0
-Found: @angular/core@11.2.11
-node_modules/@angular/core
-  @angular/core@"~11.2.4" from the root project
 
 Could not resolve dependency:
-peer @angular/core@"^2.0.0" from ngx-rating@0.0.9
-node_modules/ngx-rating
-  ngx-rating@"0.0.9" from the root project
+@nguniversal/express-engine@"11.2.1" from the root project
+
+Conflicting peer dependency: @angular/platform-server@11.2.11
+node_modules/@angular/platform-server
+  peer @angular/platform-server@"^11.2.4" from @nguniversal/express-engine@11.2.1
+  node_modules/@nguniversal/express-engine
+    @nguniversal/express-engine@"11.2.1" from the root project
 
 Fix the upstream dependency conflict, or retry
 this command with --force, or --legacy-peer-deps
@@ -20,53 +20,54 @@ Raw JSON explanation object:
 
 {
   "code": "ERESOLVE",
-  "current": {
-    "name": "@angular/core",
+  "current": null,
+  "currentEdge": null,
+  "edge": {
+    "type": "prod",
+    "name": "@nguniversal/express-engine",
+    "spec": "11.2.1",
+    "error": "MISSING",
+    "from": {
+      "location": "C:\\Users\\Yasser Sahli\\Desktop\\justcrock.com\\front-justcrock.com"
+    }
+  },
+  "peerConflict": {
+    "name": "@angular/platform-server",
     "version": "11.2.11",
     "whileInstalling": {
       "name": "front-end",
       "version": "0.0.0",
       "path": "C:\\Users\\Yasser Sahli\\Desktop\\justcrock.com\\front-justcrock.com"
     },
-    "location": "node_modules/@angular/core",
+    "location": "node_modules/@angular/platform-server",
     "dependents": [
       {
-        "type": "prod",
-        "name": "@angular/core",
-        "spec": "~11.2.4",
+        "type": "peer",
+        "name": "@angular/platform-server",
+        "spec": "^11.2.4",
         "from": {
-          "location": "C:\\Users\\Yasser Sahli\\Desktop\\justcrock.com\\front-justcrock.com"
+          "name": "@nguniversal/express-engine",
+          "version": "11.2.1",
+          "whileInstalling": {
+            "name": "front-end",
+            "version": "0.0.0",
+            "path": "C:\\Users\\Yasser Sahli\\Desktop\\justcrock.com\\front-justcrock.com"
+          },
+          "location": "node_modules/@nguniversal/express-engine",
+          "dependents": [
+            {
+              "type": "prod",
+              "name": "@nguniversal/express-engine",
+              "spec": "11.2.1",
+              "from": {
+                "location": "C:\\Users\\Yasser Sahli\\Desktop\\justcrock.com\\front-justcrock.com"
+              }
+            }
+          ]
         }
       }
     ]
   },
-  "edge": {
-    "type": "peer",
-    "name": "@angular/core",
-    "spec": "^2.0.0",
-    "error": "INVALID",
-    "from": {
-      "name": "ngx-rating",
-      "version": "0.0.9",
-      "whileInstalling": {
-        "name": "front-end",
-        "version": "0.0.0",
-        "path": "C:\\Users\\Yasser Sahli\\Desktop\\justcrock.com\\front-justcrock.com"
-      },
-      "location": "node_modules/ngx-rating",
-      "dependents": [
-        {
-          "type": "prod",
-          "name": "ngx-rating",
-          "spec": "0.0.9",
-          "from": {
-            "location": "C:\\Users\\Yasser Sahli\\Desktop\\justcrock.com\\front-justcrock.com"
-          }
-        }
-      ]
-    }
-  },
-  "peerConflict": null,
   "strictPeerDeps": false,
   "force": false
 }

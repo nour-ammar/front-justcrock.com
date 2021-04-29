@@ -76,7 +76,7 @@ body{margin-top:20px;}
 }
 
 .pagination > li > a, .pagination > li > span {
-  background-color: #ccc;
+  background-color: rgb(112, 106, 106);
   padding: 3px 9px;
   color: #fff;
   border: 0px;
@@ -94,8 +94,10 @@ body{margin-top:20px;}
   margin-top: 40%;
   color:white ;
   font-weight: bolder;
+  cursor: pointer;
 }
 .item-img-wrap
 {
   border:3px solid rgb(216, 215, 215);
+  margin:2%;
 }

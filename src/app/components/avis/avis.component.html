@@ -7,7 +7,7 @@
   <br/> <br/>
   <div class="box">
     <div class="container">
-      <button class="btn1" routerLink="/addrecette" *ngIf="userDetails.role==='admin'">
+      <button class="btn1" routerLink="/addAvis" >
         Ajouter Avis<i class="fa fa-plus"></i>
       </button>
       <br/> <br/>
@@ -31,12 +31,12 @@
               <a
 
               (click)="deleteavis(member.id)"
-              ><i class="fas fa-trash-alt" *ngIf="userDetails.role==='admin'"></i
+              ><i class="fas fa-trash-alt" *ngIf="userDetails.role==='admin'||userDetails.id===member.UserId"></i
             ></a>
             <a>  <i
               class="fa fa-check"
               (click)="editAvis( member.id)"
-              aria-hidden="true" *ngIf="userDetails.id===member.UserId"
+              aria-hidden="true" *ngIf="userDetails.role==='admin'||userDetails.id===member.UserId"
             ></i></a>
               <br />
             </div>

@@ -12,15 +12,15 @@ export class RecetteService {
     this.http = httpClient;
   }
   getService() {
-    return this.http.get(this.urlApi);
+    return this.http.get(this.urlApi+'/recette/');
   }
   editService(
     description: string,
     ingredient:string,
     preparation:string,
     temps_Preparation: any,
-    temps_cuisson: any,
     nombre_personne: any,
+    temps_cuisson: any,
     image: any,
     id: any
   ) {
@@ -29,8 +29,8 @@ export class RecetteService {
     body.append('Ingredient', ingredient);
     body.append('Preparation', preparation);
     body.append('temps_Preparation', temps_Preparation);
-    body.append('temps_cuisson', temps_cuisson);
     body.append('nombre_personne', nombre_personne);
+    body.append('temps_cuisson', temps_cuisson);
     body.append('Photo', image);
 
     return this.http.put(this.urlApi+'/recette/' + id, body);
@@ -74,7 +74,7 @@ export class RecetteService {
     return this.http.post(this.urlApi+'/comment/addComment', body);
   }
   deleteServiceComment(id: any) {
-    return this.http.delete(this.urlApi+'/comment/' + id);
+    return this.http.delete(this.urlApi+'/comment/'+ id);
   }
   editServiceComment(commentaire: any, id: any, idrecette: any, userId: any) {
     const body = {

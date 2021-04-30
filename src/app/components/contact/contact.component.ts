@@ -41,6 +41,9 @@ onSubmit() {
 
         (res:any)  =>{
           this.toastr.success("Email  Envoyer")
+          
+
+
 
             },
         err =>{

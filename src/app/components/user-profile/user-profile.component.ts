@@ -17,13 +17,12 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUserProfile().subscribe((data:any)=>{
-      console.log(data)
       this.userDetails=data.user
     })
   }
   onLogout(){
     this.userService.deleteToken()
-    this.router.navigate(['/login'])
+    this.router.navigate(['/connect'])
   }
     onSelectimage(event: any) {
       this.image=event.target.files[0]
@@ -34,9 +33,12 @@ this.modifie=true
     }
     modifierimage(){
       this.userService.changeService(this.image,this.userDetails.id).subscribe((data)=>{
-        console.log(data)
+        location.reload();
       })
+
+
     }
+
 
 
 }

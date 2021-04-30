@@ -7,6 +7,7 @@ import { Profile } from './user-profile.model';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Title, Meta } from '@angular/platform-browser';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Injectable } from '@angular/core';
 
 
 
@@ -15,6 +16,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './recettes.component.html',
   styleUrls: ['./recettes.component.css']
 })
+@Injectable()
 export class RecettesComponent implements OnInit {
   myArray: any = [];
   file: any;
@@ -27,6 +29,7 @@ export class RecettesComponent implements OnInit {
   constructor(config: NgbModalConfig, private modalService: NgbModal ,private titleService: Title,
     private metaTagService: Meta,private myService: RecetteService,private userService:UserService,private sanitizer: DomSanitizer, private router: Router
     ) {
+
       config.backdrop = 'static';
       config.keyboard = false;
       this.userDetails = new Profile();
@@ -72,7 +75,7 @@ export class RecettesComponent implements OnInit {
 
     this.myService.getService().subscribe((data:any) => {
       this.myArray = data;
-
+console.log(data)
       this.recettes = this.myArray.map((recette: any) => {
         var sum = 0;
          var nbr=0

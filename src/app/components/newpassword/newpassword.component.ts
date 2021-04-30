@@ -43,7 +43,7 @@ export class NewpasswordComponent implements OnInit {
           (res:any)  =>{
             console.log(res)
 
-          this.router.navigateByUrl('/login')
+          this.router.navigateByUrl('/connect')
 
           },
           err =>{

@@ -11,7 +11,7 @@
     <div class="box" *ngFor="let recette of recettes ||myArray ; let i = index" >
       <div class="imgBx" *ngIf="i < 6">
         <img [routerLink]="['/details', recette.Id_recette]"
-        src="assets/uploads/recettes/{{ recette.Photo }}">
+        [src]="recette.Photo">
 
       </div>
       <div class="text">

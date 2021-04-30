@@ -48,7 +48,7 @@ showSuccessMessage:any
     )
       .subscribe( (res:any)  =>{
         setTimeout(()=>this.showSuccessMessage=false,4000)
-      this.router.navigateByUrl('/login')
+      this.router.navigateByUrl('/connect')
     },
       err =>{
         if(err.status=== 409)

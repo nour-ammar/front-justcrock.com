@@ -25,7 +25,6 @@ const routes: Routes = [
   {path:'recette',component:RecettesComponent},
   {path:'addrecette',component:AddrecetteComponent},
   {path:'sign-up',component:SignUpComponent},
-  {path:'login',component:LoginComponent},
   {path:'userProfile',component:UserProfileComponent,canActivate:[AuthGuard] },
   {path:'details/:id',component:DetailsComponent },
    {path:'chat',component:ChatComponent},
@@ -34,7 +33,9 @@ const routes: Routes = [
   {path:'edit/:id',component:EditRecetteComponent},
   {path:'avis',component:AvisComponent},
   {path:'addAvis',component:AddAvisComponent},
-  {path:'editAvis/:id',component:EditAvisComponent}
+  {path:'editAvis/:id',component:EditAvisComponent},
+  {path:'connect',component:LoginComponent},
+
 ];
 
 @NgModule({

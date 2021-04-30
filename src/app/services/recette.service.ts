@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class RecetteService {
   recettes: any;
   http: HttpClient;
-  urlApi = 'http://localhost:3000/api';
+  urlApi = 'http://jcback.justcrok.com/api';
 
   constructor(private httpClient: HttpClient) {
     this.http = httpClient;
@@ -21,7 +21,7 @@ export class RecetteService {
     temps_Preparation: any,
     nombre_personne: any,
     temps_cuisson: any,
-    image: any,
+    Photo: any,
     id: any
   ) {
     const body = new FormData();
@@ -31,9 +31,9 @@ export class RecetteService {
     body.append('temps_Preparation', temps_Preparation);
     body.append('nombre_personne', nombre_personne);
     body.append('temps_cuisson', temps_cuisson);
-    body.append('Photo', image);
+    body.append('Photo', Photo);
 
-    return this.http.put(this.urlApi+'/recette/' + id, body);
+    return this.http.put(this.urlApi+'/recette/'+ id, body);
   }
 
   deleteService(id: String) {
@@ -57,7 +57,7 @@ export class RecetteService {
     body.append('nombre_personne', nombre_personne);
     body.append('Photo', image);
 
-    return this.http.post(this.urlApi, body);
+    return this.http.post(this.urlApi+'/recette/', body);
   }
   getrecetteById(id: string) {
     return this.http.get(this.urlApi+'/recette/' + id);

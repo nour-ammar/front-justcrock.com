@@ -23,7 +23,6 @@ constructor(private myService: RecetteService,private userService:UserService,pr
   ngOnInit(): void {
 this.myService.getAvisService().subscribe((data)=>{
   this.avis=data
-  console.log(this.avis)
 })
 this.userService.getUserProfile().subscribe((data:any)=>{
   console.log(data)
@@ -31,14 +30,12 @@ this.userService.getUserProfile().subscribe((data:any)=>{
 })
 this.userService.getAllService().subscribe((res:any)=>{
   this.users=res
-  console.log('users',this.users)
 })
   }
   deleteavis(id:any){
     this.userService.deleteAvisService(id).subscribe((data:any)=>{
       this.myService.getAvisService().subscribe((data)=>{
         this.avis=data
-        console.log(this.avis)
       })
     })
   }

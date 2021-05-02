@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RecetteService} from './../../services/recette.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {UserService} from './../../services/user.service'
 @Component({
   selector: 'app-toprecette',
@@ -17,14 +17,16 @@ export class ToprecetteComponent implements OnInit {
   rates:any;
    recettes:any=[]
   constructor(private myService: RecetteService,private userService:UserService,private sanitizer: DomSanitizer, private router: Router
-    ) {
+    ,private route: ActivatedRoute) {
       this.myService.getServiceRates().subscribe((res:any)=>{
         this.rates=res
       })
 
     }
 
-  ngOnInit(): void {
+    async ngOnInit(): Promise<void> {
+    this.rates= await this.route.snapshot.data
+
     this.myService.getService().subscribe((data:any) => {
       this.myArray = data;
 
@@ -54,7 +56,6 @@ export class ToprecetteComponent implements OnInit {
   }
 });
   //  this.getRecette()
-  console.log('recettes',this.recettes)
 })
 
   }

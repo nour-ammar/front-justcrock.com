@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
 export class RecetteService {
   recettes: any;
   http: HttpClient;
-  urlApi = 'https://jcback.justcrok.com/api';
+  urlApi = 'http://localhost:3000/api';
 
   constructor(private httpClient: HttpClient) {
     this.http = httpClient;
@@ -119,7 +121,7 @@ export class RecetteService {
 
   }
   getAvisService(){
-    return this.http.get(this.urlApi+'/avis/');
+    return this.http.get<any>(this.urlApi+'/avis/');
 
   }
   editAvisService(body:any){

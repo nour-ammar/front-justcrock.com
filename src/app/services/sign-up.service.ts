@@ -8,7 +8,7 @@ export class SignUpService {
   http: HttpClient;
   noAuthHeader={headers:new HttpHeaders({'NoAuth':'True'})}
 
-  urlApi = 'https://jcback.justcrok.com/api/user/register';
+  urlApi = 'http://localhost:3000/api/user/register';
   constructor(private httpClient: HttpClient) {
     this.http = httpClient;
 

@@ -17,12 +17,17 @@ import {EditRecetteComponent} from './components/edit-recette/edit-recette.compo
 import { AvisComponent } from './components/avis/avis.component';
 import { AddAvisComponent } from './components/add-avis/add-avis.component';
 import { EditAvisComponent } from './components/edit-avis/edit-avis.component';
+import { RecettesResolver } from './recettes.resolver';
 const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'contact',component:ContactComponent},
   {path:'',component:HomepageComponent},
-  {path:'home',component:HomepageComponent},
-  {path:'recette',component:RecettesComponent},
+  {path:'home',component:HomepageComponent,  resolve: {
+    items: RecettesResolver
+  } },
+  {path:'recette',component:RecettesComponent,  resolve: {
+    items: RecettesResolver
+  }},
   {path:'addrecette',component:AddrecetteComponent},
   {path:'sign-up',component:SignUpComponent},
   {path:'userProfile',component:UserProfileComponent,canActivate:[AuthGuard] },

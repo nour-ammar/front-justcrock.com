@@ -11,6 +11,8 @@ export class UserProfileComponent implements OnInit {
  userDetails:Profile;
  modifie:boolean = false;
  image:any
+ nom:any
+ prenom:any
   constructor(private userService:UserService,private router:Router) {
     this.userDetails = new Profile();
    }
@@ -18,6 +20,8 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUserProfile().subscribe((data:any)=>{
       this.userDetails=data.user
+     this.nom=this.userDetails.fullName.split(' ')[0]
+     this.prenom=this.userDetails.fullName.split(' ')[1]
     })
   }
   onLogout(){

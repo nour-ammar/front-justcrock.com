@@ -51,7 +51,7 @@
                 class="mix col-sm-3 page1 page4 margin30"
                 *ngFor="let recette of recettes || myArray; let i = index"
               >
-                <div class="item-img-wrap" *ngIf="i < 4">
+                <div class="item-img-wrap" *ngIf="i >= 4">
                   <img
                     [src]="recette.Photo"
                     class="img-responsive"

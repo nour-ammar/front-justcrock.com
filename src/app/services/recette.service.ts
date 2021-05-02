@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class RecetteService {
   recettes: any;
   http: HttpClient;
-  urlApi = 'http://jcback.justcrok.com/api';
+  urlApi = 'http://localhost:3000/api';
 
   constructor(private httpClient: HttpClient) {
     this.http = httpClient;

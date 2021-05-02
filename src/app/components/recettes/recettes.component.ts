@@ -75,32 +75,6 @@ export class RecettesComponent implements OnInit {
 
     this.myService.getService().subscribe((data:any) => {
       this.myArray = data;
-console.log(data)
-      this.recettes = this.myArray.map((recette: any) => {
-        var sum = 0;
-         var nbr=0
-
-    this.rates.map((rate: any) => {
-      if(rate.Id_recette == recette.Id_recette){
-        sum = sum +Number( rate.rates)
-        nbr=nbr+1
-
-      }
-
-    })
-
-    recette['averagerate'] = (sum /nbr).toFixed(1);
-    return recette;
-  })
-  .sort(function (a: any, b: any) {
-    if (a.averagerate === 'NaN') {
-      return 1;
-    } else if (b.averagerate === 'NaN') {
-      return -1;
-    } else {
-      return b.averagerate - a.averagerate;
-    }
-  });
     })
 
   }

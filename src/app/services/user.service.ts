@@ -6,7 +6,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
   http: HttpClient;
-  urlApi = 'http://jcback.justcrok.com/api';
+  urlApi = 'http://localhost:3000/api';
 noAuthHeader={headers:new HttpHeaders({'NoAuth':'True'})}
   constructor(private httpClient: HttpClient) {
     this.http = httpClient;

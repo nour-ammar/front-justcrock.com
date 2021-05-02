@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ChatService {
 
-  private url:string = 'http://jcback.justcrok.com';
+  private url:string = 'http://localhost:3000';
   private socket;
 
   constructor() {

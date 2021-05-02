@@ -35,7 +35,6 @@ const routes: Routes = [
   {path:'addAvis',component:AddAvisComponent},
   {path:'editAvis/:id',component:EditAvisComponent},
   {path:'connect',component:LoginComponent},
-// commentaire
 ];
 
 @NgModule({
